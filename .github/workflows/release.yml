@@ -17,170 +17,137 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 
 
-      - name: Setup Git Submodules
+      # 🔥 تم إصلاح المشكلة عبر فصل الأوامر وحذف النصوص العربية لتفادي أخطاء الخادم
+      - name: Force Fetch Local Package Dependencies
         run: |
-          echo "🔄 جاري تنظيف وتحميل المجلدات الفرعية الناقصة..."
           rm -rf IDeviceKitten NimbleKit AltSourceKit
-          git clone --depth=1 "https://github.com/hassan201211/IDeviceKitten.git" IDeviceKitten || echo "⚠️ لم يتمكن من استنساخ IDeviceKitten"
-          git clone --depth=1 "https://github.com/hassan201211/NimbleKit.git" NimbleKit || echo "⚠️ لم يتمكن من استنساخ NimbleKit"
-          git clone --depth=1 "https://github.com/hassan201211/AltSourceKit.git" AltSourceKit || echo "⚠️ لم يتمكن من استنساخ AltSourceKit"
-          echo "✅ تم تحميل كافة الحزم المتاحة بنجاح"
+          git clone --depth=1 https://github.com IDeviceKitten
+          git clone --depth=1 https://github.com NimbleKit
+          git clone --depth=1 https://github.com AltSourceKit
 
       - name: Setup Xcode Cache
         uses: actions/cache@v4
         with:
           path: ~/Library/Developer/Xcode/DerivedData/
-          key: ${{ runner.os }}-xcode-deriveddata-${{ hashFiles('**/project.pbxproj', '**/*.Package.resolved') }}
+          key: runner.os-xcode-deriveddata-\${{ hashFiles('**/project.pbxproj', '**/*.Package.resolved') }}
           restore-keys: |
-            ${{ runner.os }}-xcode-deriveddata-
+            \${{ runner.os }}-xcode-deriveddata-
 
-      - name: Configure Xcode
+      - name: Auto-Detect and Use Xcode 16
         run: |
-          echo "🔍 جاري البحث عن Xcode 16..."
-          XCODE_PATH=$(ls -d /Applications/Xcode_16*.app 2>/dev/null | head -n 1)
-          if [ -z "$XCODE_PATH" ]; then
-            echo "⚠️ Xcode 16 غير متوفر، سيتم استخدام النسخة الافتراضية"
-            xcode-select --print-path
-          else
-            echo "✅ تم العثور على Xcode: $XCODE_PATH"
-            sudo xcode-select -s "$XCODE_PATH/Contents/Developer"
+          XCODE_PATH=\$(ls -d /Applications/Xcode_16*.app 2>/dev/null | head -n 1)
+          if [ -z "\$XCODE_PATH" ]; then
+            echo "Xcode 16 not found"
+            ls -d /Applications/Xcode*.app
+            exit 1
           fi
-          xcode-select --print-path
+          sudo xcode-select -s "\$XCODE_PATH/Contents/Developer"
 
-      - name: Fix Build Configuration
-        continue-on-error: true
+      - name: Fast Modify & Patch (Ksign Info & Expert Fixes)
         run: |
-          echo "🔧 جاري إصلاح تكوين البناء..."
-          
-          # 1. إصلاح Info.plist
+          # 1. تعديل الاسم والحزمة إلى Ksign
           INFO_PLIST_PATH="Feather/Resources/Info.plist"
-          if [ -f "$INFO_PLIST_PATH" ]; then
-            echo "✏️ تعديل Info.plist..."
-            plutil -replace CFBundleDisplayName -string "Ksign" "$INFO_PLIST_PATH" || true
-            plutil -replace CFBundleName -string "Ksign" "$INFO_PLIST_PATH" || true
-            plutil -replace CFBundleIdentifier -string "app.ksign.store" "$INFO_PLIST_PATH" || true
-            plutil -replace MinimumOSVersion -string "15.0" "$INFO_PLIST_PATH" || true
+          if [ -f "\$INFO_PLIST_PATH" ]; then
+            plutil -replace CFBundleDisplayName -string "Ksign" "\$INFO_PLIST_PATH" || true
+            plutil -replace CFBundleName -string "Ksign" "\$INFO_PLIST_PATH" || true
+            plutil -replace CFBundleIdentifier -string "app.ksign.store" "\$INFO_PLIST_PATH" || true
+            plutil -replace MinimumOSVersion -string "15.0" "\$INFO_PLIST_PATH" || true
           fi
 
-          # 2. إصلاح project.pbxproj
-          find . -name "project.pbxproj" -type f -print0 | while IFS= read -r -d '' file; do
-            echo "🔨 إصلاح: $file"
-            sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9]*\.[0-9]*/IPHONEOS_DEPLOYMENT_TARGET = 15.0/g' "$file" || true
-            sed -i '' 's/SWIFT_VERSION = [0-9]*\.[0-9]*/SWIFT_VERSION = 5.0/g' "$file" || true
-          done
+          # 2. إجبار البناء على iOS 15 والتزامن الآمن
+          find . -name "project.pbxproj" -exec sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9]*\.[0-9]*;/IPHONEOS_DEPLOYMENT_TARGET = 15.0; SWIFT_VERSION = 5.0; SWIFT_STRICT_CONCURRENCY = minimal;/g' {} +
 
-          # 3. إصلاح ملفات Swift الشائعة
-          if [ -f "Feather/Utilities/BackgroundTaskManager.swift" ]; then
-            echo "🔧 إصلاح BackgroundTaskManager.swift..."
-            sed -i '' 's/BGContinuedProcessingTaskRequest/BGProcessingTaskRequest/g' "Feather/Utilities/BackgroundTaskManager.swift" || true
-            sed -i '' 's/BGContinuedProcessingTask/BGProcessingTask/g' "Feather/Utilities/BackgroundTaskManager.swift" || true
+          if [ -f "Makefile" ]; then
+            sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET=15.0;/IPHONEOS_DEPLOYMENT_TARGET=15.0 SWIFT_VERSION=5.0 SWIFT_STRICT_CONCURRENCY=minimal;/g' Makefile
           fi
 
-          find . -name "*.swift" -type f -print0 | while IFS= read -r -d '' file; do
-            sed -i '' 's/\.glassEffect()/.opacity(0.8)/g' "$file" || true
-            sed -i '' 's/app\.developerName/app.developer/g' "$file" || true
-            sed -i '' 's/@preconcurrency import SwiftUI/import SwiftUI/g' "$file" || true
-          done
+          # 3. ترقيع الواجهات وأخطاء المتغيرات
+          find . -name "*.swift" -type f -exec perl -pi -e '
+            s/\.rect\(cornerRadius:\s*([^,]+),\s*style:\s*\.([^)]+)\)/RoundedRectangle(cornerRadius: \$1, style: .\$2)/g;
+            s/\.glassEffect\([^,]+,\s*in:/ \.background(Color.secondary.opacity(0.2), in:/g;             s/\.glassEffect\(\)/\.background(Color.secondary.opacity(0.2))/g;
+            s/app\.developerName/app.developer/g;
+            s/Text\(app\.name\)/Text\(app.name \?\? "Unknown App"\)/g;
+          ' {} +
 
-          echo "✅ تم إصلاح جميع التكوينات"
+          # 4. الحل لمشكلة NimbleKit
+          find . -name "Binding+optional.swift" -exec perl -pi -e 's/import SwiftUI/\@preconcurrency import SwiftUI/g' {} +
+
+          # 5. الحل لمشكلة BackgroundTaskManager
+          BG_FILE="Feather/Utilities/BackgroundTaskManager.swift"
+          if [ -f "\$BG_FILE" ]; then
+            perl -pi -e 's/BGContinuedProcessingTaskRequest/BGProcessingTaskRequest/g' "\$BG_FILE"
+            perl -pi -e 's/BGContinuedProcessingTask/BGProcessingTask/g' "\$BG_FILE"
+            perl -pi -e 's/,\s*title:[^)]+\)/)/g' "\$BG_FILE"
+            perl -pi -e 's/^(.*request\.strategy.*)\(/\/\/ 1/g' "\)BG_FILE"
+            perl -pi -e 's/^(.*task\.progress.*)\(/\/\/ 1/g' "\)BG_FILE"
+            perl -pi -e 's/^(.*task\.updateTitle.*)\(/\/\/ 1/g' "\)BG_FILE"
+          fi
 
       - name: Build Ksign IPA
-        continue-on-error: true
         run: |
-          echo "🏗️ جاري بناء Ksign IPA..."
-          
           export IPHONEOS_DEPLOYMENT_TARGET=15.0
           export SWIFT_VERSION=5.0
           export SWIFT_STRICT_CONCURRENCY=minimal
           
-          if [ -f "Makefile" ]; then
-            echo "📋 تم العثور على Makefile، جاري البناء..."
-            make iphoneos NAME=Ksign SWIFT_VERSION=5.0 SWIFT_STRICT_CONCURRENCY=minimal || echo "⚠️ فشلت محاولة البناء باستخدام Makefile"
-          elif [ -f "Package.swift" ]; then
-            echo "📦 تم العثور على Package.swift، جاري البناء باستخدام Swift..."
-            swift build -c release || echo "⚠️ فشلت محاولة البناء باستخدام Swift"
-          else
-            echo "ℹ️ لم يتم العثور على ملف بناء"
-          fi
-          
-          echo "✅ خطوة البناء مكتملة"
+          make iphoneos NAME=Ksign SWIFT_VERSION=5.0 SWIFT_STRICT_CONCURRENCY=minimal
 
-      - name: Prepare Release Package
-        run: |
-          echo "📦 جاري تحضير حزمة الإصدار..."
-          
-          mkdir -p packages
-          
-          if [ ! -f "packages/Ksign.ipa" ]; then
-            touch packages/Ksign.ipa
-            echo "Beta Build Package" > packages/Ksign.ipa
-          fi
-          
-          cat > packages/build_info.txt << EOF
-Ksign Beta Build
-================
-Build Date: $(date)
-Commit: $(git log -1 --pretty=%B)
-SHA: $(git rev-parse HEAD)
-Author: $(git log -1 --pretty=%an)
-EOF
-          
-          ls -lah packages/
-          echo "✅ تم تحضير حزمة الإصدار"
-
-      - name: Create GitHub Release
+      - name: Update Beta Release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "🚀 جاري إنشاء إصدار GitHub..."
+          LATEST_OFFICIAL_TAG=\$(git describe --tags --match "v*" --abbrev=0 2>/dev/null || echo "")
+          COMMIT_MSG=\$(git log -1 --pretty=%B)
           
-          COMMIT_MSG=$(git log -1 --pretty=%B)
-          COMMIT_SHA=$(git rev-parse --short HEAD)
-          AUTHOR=$(git log -1 --pretty=%an)
+          echo "## Commit: \`$COMMIT_MSG\` (\${{ github.sha }})" > release_notes.md
           
-          cat > release_notes.md << EOF
-# Ksign Beta Build
-
-## معلومات الإصدار
-- **الالتزام (Commit):** \`$COMMIT_MSG\`
-- **SHA:** \`$COMMIT_SHA\`
-- **المؤلف:** $AUTHOR
-- **التاريخ:** $(date '+%Y-%m-%d %H:%M:%S')
-- **الفرع:** main
-
-## ملاحظات البناء
-تم بناء هذا الإصدار تلقائياً من خلال GitHub Actions
-
----
-*تم الإنشاء بواسطة Ksign Beta Build Workflow*
-EOF
-
-          echo "🗑️ جاري حذف الإصدار السابق..."
-          gh release delete beta --cleanup-tag -y 2>/dev/null || echo "ℹ️ لا يوجد إصدار سابق"
-          sleep 2
+          if [ -n "\$LATEST_OFFICIAL_TAG" ]; then
+            echo "### New in this build (Compared to \$LATEST_OFFICIAL_TAG):" >> release_notes.md
+            CHANGES=\$(git log --pretty=format:"* %s (%h)" \${LATEST_OFFICIAL_TAG}..HEAD)
+            if [ -z "\$CHANGES" ]; then
+              echo "* No code changes since \$LATEST_OFFICIAL_TAG" >> release_notes.md
+            else
+              echo "\$CHANGES" >> release_notes.md
+            fi
+          else
+            echo "### Initial Beta Build" >> release_notes.md
+          fi
           
-          echo "✨ جاري إنشاء إصدار جديد..."
-          gh release create beta \
-            packages/Ksign.ipa \
-            packages/build_info.txt \
-            release_notes.md \
-            --title "Ksign Beta Build - $COMMIT_SHA" \
+          echo "### Commit SHA: \${{ github.sha }}" >> release_notes.md
+
+          gh release delete beta --cleanup-tag -y || true
+          
+          gh release create beta "packages/Ksign.ipa" \
+            --title "Latest Beta Build" \
             --notes-file release_notes.md \
             --prerelease \
-            --target main || echo "⚠️ فشل إنشاء الإصدار"
-          
-          echo "✅ تم إنشاء الإصدار بنجاح"
+            --target \${{ github.sha }}
 
-      - name: Post Build Status
-        if: always()
+      - name: Notify Discord
+        env:
+          DISCORD_WEBHOOK: \${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          echo "📊 ملخص البناء"
-          echo "============="
-          echo "✅ اكتمل البناء في: $(date)"
-          echo "📁 رابط الريبو: ${{ github.server_url }}/${{ github.repository }}"
-          echo "📌 رابط الإصدار: ${{ github.server_url }}/${{ github.repository }}/releases/tag/beta"
-          echo "🔗 الكود: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
-          echo ""
-          echo "لعرض السجلات الكاملة: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          if [ -z "\$DISCORD_WEBHOOK" ]; then
+            echo "Discord Webhook not set"
+            exit 0
+          fi
+          
+          COMMIT_MSG=\$(git log -1 --pretty=%B)
+          REPO="\${{ github.repository }}"
+          TAG="beta"
+          FILENAME="Ksign.ipa"
+          
+          DOWNLOAD_URL="https://github.com\$REPO/releases/download/TAG/FILENAME"
+          RELEASE_URL="https://github.comREPO/releases/tag/TAG"
+          
+          jq -n \
+            --arg commit_msg "\$COMMIT_MSG" \
+            --arg download_url "\$DOWNLOAD_URL" \
+            --arg release_url "\$RELEASE_URL" \
+            '{content: "🚀 **New Beta Build (Ksign)!**\n\n**Commit:** `\($commit_msg)`\n\n📥 [**Download IPA**](\(\$download_url))\n🔗 [View Release in GitHub](\(\$release_url))"}' > discord_payload.json
+
+          curl -s \
+            -H "Content-Type: application/json" \
+            -d @discord_payload.json \
+            "\$DISCORD_WEBHOOK"
