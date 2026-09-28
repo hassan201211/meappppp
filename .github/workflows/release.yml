@@ -19,14 +19,15 @@ jobs:
         with:
           fetch-depth: 0 
 
-      # 🛠️ خطوة إجبارية لتحميل المجلدات الفرعية الناقصة لحل مشكلة IDeviceKitten و NimbleKit
-      - name: Force Fetch Missing Submodules
+      # 🔥 جلب الحزم المحلية مباشرة لتخطي خطأ المجلد الناقص IDeviceKitten
+      - name: Force Fetch Local Package Dependencies
         run: |
-          echo "🔄 جاري تنظيف وتحميل المجلدات الفرعية الناقصة..."
+          echo "🔄 جاري مسح الروابط الوهمية وتحميل الحزم المحلية الأصلية..."
           rm -rf IDeviceKitten NimbleKit AltSourceKit
-          git clone https://github.com IDeviceKitten
-          git clone https://github.com NimbleKit
-          git clone https://github.com AltSourceKit
+          git clone --depth=1 https://github.com IDeviceKitten
+          git clone --depth=1 https://github.com NimbleKit
+          git clone --depth=1 https://github.com AltSourceKit
+          echo "✅ تم تحميل كافة الحزم بنجاح في المسارات المطلوبة."
 
       - name: Setup Xcode Cache
         uses: actions/cache@v4
@@ -140,8 +141,8 @@ jobs:
           TAG="beta"
           FILENAME="Ksign.ipa"
           
-          DOWNLOAD_URL="https://github.com/\$REPO/releases/download/TAG/FILENAME"
-          RELEASE_URL="https://github.com"
+          DOWNLOAD_URL="https://github.com\$REPO/releases/download/TAG/FILENAME"
+          RELEASE_URL="https://github.comREPO/releases/tag/TAG"
           
           jq -n \
             --arg commit_msg "\$COMMIT_MSG" \
