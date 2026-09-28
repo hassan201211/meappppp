@@ -19,14 +19,14 @@ jobs:
         with:
           fetch-depth: 0 
 
-      # 🔥 جلب الحزم المحلية مباشرة لتخطي خطأ المجلد الناقص IDeviceKitten
+      # 🔥 تم إصلاح الرابط وإزالة التعارض لتخطي خطأ الـ Clone بنجاح
       - name: Force Fetch Local Package Dependencies
         run: |
-          echo "🔄 جاري مسح الروابط الوهمية وتحميل الحزم المحلية الأصلية..."
+          echo "🔄 جاري تنظيف وتحميل المجلدات الفرعية الناقصة..."
           rm -rf IDeviceKitten NimbleKit AltSourceKit
-          git clone --depth=1 https://github.com IDeviceKitten
-          git clone --depth=1 https://github.com NimbleKit
-          git clone --depth=1 https://github.com AltSourceKit
+          git clone --depth=1 "https://github.com" IDeviceKitten
+          git clone --depth=1 "https://github.com" NimbleKit
+          git clone --depth=1 "https://github.com" AltSourceKit
           echo "✅ تم تحميل كافة الحزم بنجاح في المسارات المطلوبة."
 
       - name: Setup Xcode Cache
@@ -141,8 +141,8 @@ jobs:
           TAG="beta"
           FILENAME="Ksign.ipa"
           
-          DOWNLOAD_URL="https://github.com\$REPO/releases/download/TAG/FILENAME"
-          RELEASE_URL="https://github.comREPO/releases/tag/TAG"
+          DOWNLOAD_URL="https://github.com/\$REPO/releases/download/TAG/FILENAME"
+          RELEASE_URL="https://github.com"
           
           jq -n \
             --arg commit_msg "\$COMMIT_MSG" \
