@@ -51,7 +51,6 @@ uint64_t ZUtil::GetMicroSecond()
 #endif
 }
 
-#if !TARGET_OS_IOS
 bool  ZUtil::SystemExecV(const char* szCmd, ...)
 {
 	FORMAT_V(szCmd, szRealCmd);
@@ -67,7 +66,6 @@ bool  ZUtil::SystemExecV(const char* szCmd, ...)
 	}
 	return true;
 }
-#endif
 
 uint16_t ZUtil::Swap(uint16_t value)
 {
@@ -152,8 +150,9 @@ const char* ZUtil::GetBaseName(const char* path)
 
 int ZUtil::builtin_clzll(uint64_t x)
 {
-	//__builtin_clzll(x);
-
+#if defined(__GNUC__) || defined(__clang__)
+	return x == 0 ? 64 : __builtin_clzll(x);
+#else
 	if (x == 0) {
 		return 64;
 	}
@@ -184,4 +183,5 @@ int ZUtil::builtin_clzll(uint64_t x)
 	}
 
 	return count;
+#endif
 }
