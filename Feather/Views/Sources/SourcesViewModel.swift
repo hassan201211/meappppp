@@ -2,6 +2,8 @@
 //  SourcesViewModel.swift
 //  Feather
 //
+//  Created by samara on 30.04.2025.
+//
 
 import Foundation
 import AltSourceKit
@@ -19,18 +21,22 @@ final class SourcesViewModel: ObservableObject {
 	var isFinished = true
 	@Published var sources: [AltSource: ASRepository] = [:]
 	
-	func fetchSources(_ sourcesList: FetchedResults<AltSource>, refresh: Bool = false, batchSize: Int = 4) async {
+	func fetchSources(_ sources: FetchedResults<AltSource>, refresh: Bool = false, batchSize: Int = 4) async {
 		guard isFinished else { return }
 		
-		if !refresh, sourcesList.allSatisfy({ self.sources[$0] != nil }) { return }
+		// check if sources to be fetched are the same as before, if yes, return
+		// also skip check if refresh is true
+		if !refresh, sources.allSatisfy({ self.sources[$0] != nil }) { return }
 		
+		// isfinished is used to prevent multiple fetches at the same time
 		isFinished = false
 		defer { isFinished = true }
 		
-        // 🔥 الحل الذهبي للسرعة: قمنا بإزالة السطر الذي يمسح الشاشة (self.sources = [:])
-        // الآن ستبقى التطبيقات موجودة على الشاشة أثناء تحديثها في الخلفية ولن يضطر المستخدم للانتظار!
+		await MainActor.run {
+			self.sources = [:]
+		}
 		
-		let sourcesArray = Array(sourcesList)
+		let sourcesArray = Array(sources)
 		
 		for startIndex in stride(from: 0, to: sourcesArray.count, by: batchSize) {
 			let endIndex = min(startIndex + batchSize, sourcesArray.count)

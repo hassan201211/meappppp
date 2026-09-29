@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
 	name: "AltSourceKit",
 	platforms: [
-		.iOS(.v15),
-		.tvOS(.v15),
+		.iOS(.v14),
+		.tvOS(.v14),
 		.custom("xros", versionString: "1.3")
 	],
 	products: [

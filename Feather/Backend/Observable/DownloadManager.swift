@@ -2,7 +2,7 @@
 //  enum.swift
 //  Feather
 //
-//  Modified for CY STORE - Direct AutoSign & Visual Feedback ⚡️
+//  Created by samara on 3.05.2025.
 //
 
 import Foundation
@@ -15,11 +15,11 @@ class Download: Identifiable, @unchecked Sendable {
 	@Published var bytesDownloaded: Int64 = 0
 	@Published var totalBytes: Int64 = 0
 	@Published var unpackageProgress: Double = 0.0
-    @Published var isSigning: Bool = false // 🔥 حالة جديدة لإظهار شريط التوقيع للمشترك
 	
 	var overallProgress: Double {
-        if isSigning { return 1.0 } // إذا كان يوقع، نملأ الشريط
-		return onlyArchiving ? unpackageProgress : (0.3 * unpackageProgress) + (0.7 * progress)
+		onlyArchiving
+		? unpackageProgress
+		: (0.3 * unpackageProgress) + (0.7 * progress)
 	}
 	
 	var task: URLSessionDownloadTask?
@@ -29,18 +29,18 @@ class Download: Identifiable, @unchecked Sendable {
 	let url: URL
 	let fileName: String
 	let onlyArchiving: Bool
-    let autoSign: Bool
+	var sourceProvenance: SourceAppProvenance?
 	
 	init(
 		id: String,
 		url: URL,
 		onlyArchiving: Bool = false,
-        autoSign: Bool = false
+		sourceProvenance: SourceAppProvenance? = nil
 	) {
 		self.id = id
 		self.url = url
 		self.onlyArchiving = onlyArchiving
-        self.autoSign = autoSign
+		self.sourceProvenance = sourceProvenance
 		self.fileName = url.lastPathComponent
 	}
 }
@@ -77,14 +77,17 @@ class DownloadManager: NSObject, ObservableObject {
 	func startDownload(
 		from url: URL,
 		id: String = UUID().uuidString,
-        autoSign: Bool = false
+		sourceProvenance: SourceAppProvenance? = nil
 	) -> Download {
-		if let existingDownload = downloads.first(where: { $0.url == url }) {
+		let requestHasSourceProvenance = sourceProvenance != nil
+		if let existingDownload = downloads.first(where: {
+			$0.url == url && ($0.sourceProvenance != nil) == requestHasSourceProvenance
+		}) {
 			resumeDownload(existingDownload)
 			return existingDownload
 		}
 		
-		let download = Download(id: id, url: url, autoSign: autoSign)
+		let download = Download(id: id, url: url, sourceProvenance: sourceProvenance)
 		
 		let task = _session.downloadTask(with: url)
 		download.task = task
@@ -168,19 +171,6 @@ class DownloadManager: NSObject, ObservableObject {
 	func getDownloadTask(by task: URLSessionDownloadTask) -> Download? {
 		return downloads.first(where: { $0.task == task })
 	}
-    
-    // 🔥 دالة الإزالة المنظمة
-    func removeDownload(id: String) {
-        if let index = getDownloadIndex(by: id) {
-            downloads.remove(at: index)
-            #if !targetEnvironment(macCatalyst)
-            if #available(iOS 26.0, *) {
-                BackgroundTaskManager.shared.updateProgress(for: id, progress: 1.0)
-            }
-            self._updateBackgroundAudioState()
-            #endif
-        }
-    }
 }
 
 extension DownloadManager: URLSessionDownloadDelegate {
@@ -190,21 +180,21 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			if err != nil {
 				let generator = UINotificationFeedbackGenerator()
 				generator.notificationOccurred(.error)
-                DispatchQueue.main.async { self.removeDownload(id: dl.id) }
-			} else {
-                // 🔥 الربط المباشر: إذا كان التوقيع التلقائي مفعلاً، لا نحذف الشريط بل نغير حالته!
-                if dl.autoSign {
-                    DispatchQueue.main.async {
-                        dl.isSigning = true // تغيير شكل الشريط ليصبح "جاري التوقيع"
-                        
-                        // 🔥 تم حل المشكلة: استدعاء دالة التوقيع بشكل مباشر كـ Static Method!
-                        AppDelegate.performDirectAutoSign(downloadId: dl.id)
-                    }
-                } else {
-                    // إذا لم يكن هناك توقيع تلقائي، نزيل الشريط المكتمل كالمعتاد
-                    DispatchQueue.main.async { self.removeDownload(id: dl.id) }
-                }
-            }
+			}
+			
+			DispatchQueue.main.async {
+				if let index = DownloadManager.shared.getDownloadIndex(by: dl.id) {
+					DownloadManager.shared.downloads.remove(at: index)
+					
+					#if !targetEnvironment(macCatalyst)
+					if #available(iOS 26.0, *) {
+						BackgroundTaskManager.shared.updateProgress(for: dl.id, progress: 1.0)
+					}
+					
+					self._updateBackgroundAudioState()
+					#endif
+				}
+			}
 		}
 	}
 	
@@ -217,6 +207,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 		do {
 			try FileManager.default.createDirectoryIfNeeded(at: customTempDir)
 			
+			// Use the server-suggested filename if available, otherwise fallback
 			let suggestedFileName = downloadTask.response?.suggestedFilename ?? download.fileName
 			let destinationURL = customTempDir.appendingPathComponent(suggestedFileName)
 			
@@ -248,7 +239,18 @@ extension DownloadManager: URLSessionDownloadDelegate {
 	}
 	
 	func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-		guard let _ = error, let downloadTask = task as? URLSessionDownloadTask, let download = getDownloadTask(by: downloadTask) else { return }
-		DispatchQueue.main.async { self.removeDownload(id: download.id) }
+		guard
+			let _ = error,
+			let downloadTask = task as? URLSessionDownloadTask,
+			let download = getDownloadTask(by: downloadTask)
+		else {
+			return
+		}
+		
+		DispatchQueue.main.async {
+			if let index = self.getDownloadIndex(by: download.id) {
+				self.downloads.remove(at: index)
+			}
+		}
 	}
 }

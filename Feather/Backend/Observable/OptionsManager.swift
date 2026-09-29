@@ -12,18 +12,40 @@ import UIKit
 class OptionsManager: ObservableObject {
 	static let shared = OptionsManager()
 	
-	@Published var options: Options
 	private let _key = "signing_options"
 	
+	@Published var options: Options {
+		didSet {
+			saveOptions()
+		}
+	}
+	
 	init() {
-		if
-			let data = UserDefaults.standard.data(forKey: _key),
-			let savedOptions = try? JSONDecoder().decode(Options.self, from: data)
-		{
-			self.options = savedOptions
-		} else {
-			self.options = Options.defaultOptions
-			self.saveOptions()
+		let defaults = Options.defaultOptions
+		
+		if let data = UserDefaults.standard.data(forKey: _key) {
+			do {
+				let savedDict = try JSONSerialization.jsonObject(with: data) as? [String: Any] ?? [:]
+				
+				let defaultData = try JSONEncoder().encode(defaults)
+				var mergedDict = try JSONSerialization.jsonObject(with: defaultData) as? [String: Any] ?? [:]
+
+				for (key, value) in savedDict {
+					mergedDict[key] = value
+				}
+				
+				let mergedData = try JSONSerialization.data(withJSONObject: mergedDict)
+				self.options = try JSONDecoder().decode(Options.self, from: mergedData)
+				return
+			} catch {
+				print("Failed to decode or merge options, falling back to defaults :/ \(error)")
+			}
+		}
+		
+		self.options = defaults
+		
+		if let encoded = try? JSONEncoder().encode(defaults) {
+			UserDefaults.standard.set(encoded, forKey: _key)
 		}
 	}
 	
@@ -31,14 +53,7 @@ class OptionsManager: ObservableObject {
 	func saveOptions() {
 		if let encoded = try? JSONEncoder().encode(options) {
 			UserDefaults.standard.set(encoded, forKey: _key)
-			objectWillChange.send()
 		}
-	}
-	
-	/// Resets options to default
-	func resetToDefaults() {
-		options = Options.defaultOptions
-		saveOptions()
 	}
 }
 
@@ -102,11 +117,15 @@ struct Options: Codable, Equatable {
 	var changeLanguageFilesForCustomDisplayName: Bool
 	/// If tweaks should be injected into all app extensions (PlugIns and Extensions)
 	var injectIntoExtensions: Bool
+	/// If app should merge entitlements with the binary.
+	var mergeEntitlements: Bool
 
 	// MARK: Experiments
 	
 	/// Modifies app to support liquid glass
 	var experiment_supportLiquidGlass: Bool
+	/// Modifies app to disable liquid glass
+	var experiment_disableLiquidGlass: Bool
 	/// Modifies application to use ElleKit instead of CydiaSubstrate
 	var experiment_replaceSubstrateWithEllekit: Bool
 	
@@ -146,10 +165,12 @@ struct Options: Codable, Equatable {
 		removeProvisioning: false,
 		changeLanguageFilesForCustomDisplayName: false,
 		injectIntoExtensions: false,
+		mergeEntitlements: false,
 		
 		// MARK: Experiments
 		
 		experiment_supportLiquidGlass: false,
+		experiment_disableLiquidGlass: false,
 		experiment_replaceSubstrateWithEllekit: false,
 		
 		// MARK: Post Modifications

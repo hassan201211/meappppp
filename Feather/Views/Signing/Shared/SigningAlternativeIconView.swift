@@ -39,8 +39,11 @@ struct SigningAlternativeIconView: View {
 				}
 			}
 			.onAppear(perform: _loadAlternateIcons)
-            // تم استبدال .toolbar هنا بالدالة المتوافقة مع iOS 15
-            .safeCloseToolbar(show: isModifing)
+			.toolbar {
+				if isModifing {
+					NBToolbarButton(role: .close)
+				}
+			}
 		}
 	}
 }
@@ -89,18 +92,4 @@ extension SigningAlternativeIconView {
 			return nil
 		}
 	}
-}
-
-// MARK: - Compatibility Extensions
-private extension View {
-    @ViewBuilder
-    func safeCloseToolbar(show: Bool) -> some View {
-        if show {
-            self.toolbar {
-                NBToolbarButton(role: .close)
-            }
-        } else {
-            self
-        }
-    }
 }

@@ -35,14 +35,9 @@ struct ConfigurationDictView: View {
 				_isAddingPresenting = true
 			}
 		}
-        // تم استبدال navigationDestination بـ background NavigationLink للتوافق مع iOS 15
-        .background(
-            NavigationLink(
-                destination: ConfigurationDictAddView(dataDict: $dataDict),
-                isActive: $_isAddingPresenting,
-                label: { EmptyView() }
-            )
-        )
+		.navigationDestination(isPresented: $_isAddingPresenting) {
+			ConfigurationDictAddView(dataDict: $dataDict)
+		}
 	}
 }
 

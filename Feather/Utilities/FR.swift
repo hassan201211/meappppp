@@ -3,12 +3,11 @@
 //  Feather
 //
 //  Created by samara on 22.04.2025.
-//  Modified for CY STORE - Sync Database Fix ⚡️
 //
 
 import Foundation.NSURL
 import UIKit.UIImage
-import Zsign
+import ZsignC
 import NimbleJSON
 import AltSourceKit
 import IDeviceSwift
@@ -17,22 +16,22 @@ enum FR {
 	static func handlePackageFile(
 		_ ipa: URL,
 		download: Download? = nil,
+		sourceProvenance: SourceAppProvenance? = nil,
 		completion: @escaping (Error?) -> Void
 	) {
 		Task.detached {
-			let handler = AppFileHandler(file: ipa, download: download)
+			let handler = AppFileHandler(
+				file: ipa,
+				download: download,
+				sourceProvenance: sourceProvenance
+			)
 			
 			do {
 				try await handler.copy()
 				try await handler.extract()
 				try await handler.move()
-				try await handler.addToDatabase() // يتم الحفظ هنا
+				try await handler.addToDatabase()
 				try? await handler.clean()
-				
-                // 🔥 الإصلاح هنا: إعطاء CoreData مهلة نصف ثانية لتستقر البيانات تماماً 
-                // قبل إعطاء إشارة البدء للتوقيع. هذا يمنع ضياع التطبيق!
-                try? await Task.sleep(nanoseconds: 500_000_000)
-                
 				await MainActor.run {
 					completion(nil)
 				}
@@ -110,10 +109,10 @@ enum FR {
 		using provision: URL
 	) -> Bool {
 		defer {
-			password_check_fix_WHAT_THE_FUCK_free(provision.path)
+			password_check_fix_free(provision.path)
 		}
 		
-		password_check_fix_WHAT_THE_FUCK(provision.path)
+		password_check_fix(provision.path)
 		
 		if (!p12_password_check(key.path, password)) {
 			return false
@@ -124,9 +123,7 @@ enum FR {
 	
 	static func movePairing(_ url: URL) {
 		let fileManager = FileManager.default
-        // التعديل: استخدام الطريقة المتوافقة مع iOS 15 للوصول إلى مجلد المستندات
-        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-		let dest = documentDirectory.appendingPathComponent("pairingFile.plist")
+		let dest = URL.documentsDirectory.appendingPathComponent("pairingFile.plist")
 		
 		try? fileManager.removeFileIfNeeded(at: dest)
 		
@@ -189,6 +186,7 @@ enum FR {
 	}
 	
 	static func exportCertificateAndOpenUrl(using template: String) {
+		// Helper that performs the export for a given certificate
 		func performExport(for certificate: CertificatePair) {
 			guard
 				let certificateKeyFile = Storage.shared.getFile(.certificate, from: certificate),

@@ -32,8 +32,7 @@ struct ExpandableText: View {
 						})
 						.hidden()
 				)
-				.onTapGesture {
-                    // تم حذف pGesture ليتوافق مع iOS 15 وما فوق
+				.onTapGesture {pGesture in
 					withAnimation {
 						expanded.toggle()
 					}
@@ -53,3 +52,4 @@ struct ExpandableText: View {
 		}
 	}
 }
+

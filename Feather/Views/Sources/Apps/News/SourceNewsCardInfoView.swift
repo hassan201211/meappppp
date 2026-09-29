@@ -16,8 +16,7 @@ struct SourceNewsCardInfoView: View {
 	
 	// MARK: Body
 	var body: some View {
-        // تم استبدال NavigationStack بـ NavigationView لدعم iOS 15
-		NavigationView {
+		NavigationStack {
 			ScrollView {
 				VStack(alignment: .leading, spacing: 20) {
 					ZStack(alignment: .bottomLeading) {
@@ -52,7 +51,7 @@ struct SourceNewsCardInfoView: View {
 					
 					VStack(alignment: .leading, spacing: 12) {
 						Text(new.title)
-                            .font(.title.weight(.bold)) // تعديل ليتوافق مع iOS 15
+							.font(.title.bold())
 							.foregroundStyle(.tint)
 							.multilineTextAlignment(.leading)
 						
@@ -93,6 +92,5 @@ struct SourceNewsCardInfoView: View {
 				NBToolbarButton(role: .close)
 			}
 		}
-        .navigationViewStyle(.stack) // لضمان ظهور واجهة واحدة فقط على الآيباد والآيفون
 	}
 }

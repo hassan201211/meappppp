@@ -50,7 +50,7 @@ struct SourcesAddView: View {
 		"https://stikdebug.xyz/index.json",
 		"https://apps.manicemu.site/altstore",
 		"https://alt.crystall1ne.dev"
-	].compactMap { URL(string: $0) }
+	].map { URL(string: $0)! }
 	
 	@State private var _isImporting = false
 	@State private var _sourceURL = ""
@@ -64,23 +64,19 @@ struct SourcesAddView: View {
 						.keyboardType(.URL)
 						.textInputAutocapitalization(.never)
 				} footer: {
-					VStack(alignment: .leading, spacing: 4) {
-						Text(.localized("The only supported repositories are AltStore repositories."))
-						Text(verbatim: "[\(String.localized("Learn more about how to setup a repository..."))](https://faq.altstore.io/developers/make-a-source)")
-					}
+					Text(.localized("The only supported repositories are AltStore repositories."))
+					Text(verbatim: "[\(String.localized("Learn more about how to setup a repository..."))](https://faq.altstore.io/developers/make-a-source)")
 				}
 				
 				Section {
-					Button {
+					Button(.localized("Import"), systemImage: "square.and.arrow.down") {
 						_isImporting = true
 						_fetchImportedRepositories(UIPasteboard.general.string) {
 							dismiss()
 						}
-					} label: {
-						Label(.localized("Import"), systemImage: "square.and.arrow.down")
 					}
 					
-					Button {
+					Button(.localized("Export"), systemImage: "doc.on.doc") {
 						let sources = Storage.shared.getSources()
 						guard !sources.isEmpty else {
 							UIAlertController.showAlertWithOk(
@@ -98,8 +94,6 @@ struct SourcesAddView: View {
 						) {
 							dismiss()
 						}
-					} label: {
-						Label(.localized("Export"), systemImage: "doc.on.doc")
 					}
 				} footer: {
 					Text(.localized("Supports importing from KravaSign/MapleSign and ESign."))
@@ -108,29 +102,20 @@ struct SourcesAddView: View {
 				if !_filteredRecommendedSourcesData.isEmpty {
 					NBSection(.localized("Featured")) {
 						ForEach(_filteredRecommendedSourcesData, id: \.url) { (url, source) in
-							HStack {
+							HStack(spacing: 2) {
 								FRIconCellView(
 									title: source.name ?? .localized("Unknown"),
-									subtitle: url.host ?? url.absoluteString,
+									subtitle: url.absoluteString,
 									iconUrl: source.currentIconURL
 								)
-								
-								Spacer()
-								
 								Button {
 									Storage.shared.addSource(url, repository: source) { _ in
 										_refreshFilteredRecommendedSourcesData()
 									}
 								} label: {
-									Text(.localized("Add"))
-										.font(.subheadline.weight(.bold))
-										.padding(.horizontal, 12)
-										.padding(.vertical, 6)
-										.background(Color.accentColor.opacity(0.1))
-										.clipShape(Capsule())
+									NBButton(.localized("Add"), systemImage: "arrow.down", style: .text)
 								}
 							}
-							.padding(.vertical, 2)
 						}
 					} footer: {
 						Text(.localized("Open an [issue](https://github.com/claration/Feather/issues) on GitHub if you want your source to be featured."))
@@ -138,32 +123,22 @@ struct SourcesAddView: View {
 				}
 			}
 			.toolbar {
-				ToolbarItem(placement: .navigationBarLeading) {
-					Button {
-						dismiss()
-					} label: {
-						Image(systemName: "xmark")
-                            // 🔥 تم استبدال fontWeight هنا لتدعم iOS 15
-							.font(.body.weight(.semibold))
-					}
-				}
+				NBToolbarButton(role: .cancel)
 				
-				ToolbarItem(placement: .navigationBarTrailing) {
-					HStack {
-						if !_isImporting {
-							Button {
-								FR.handleSource(_sourceURL) {
-									dismiss()
-								}
-							} label: {
-								Text(.localized("Save"))
-                                    // 🔥 تم استبدال fontWeight هنا لتدعم iOS 15
-									.font(.body.weight(.semibold))
-							}
-							.disabled(_sourceURL.isEmpty)
-						} else {
-							ProgressView()
+				if !_isImporting {
+					NBToolbarButton(
+						.localized("Save"),
+						style: .text,
+						placement: .confirmationAction,
+						isDisabled: _sourceURL.isEmpty
+					) {
+						FR.handleSource(_sourceURL) {
+							dismiss()
 						}
+					}
+				} else {
+					ToolbarItem(placement: .confirmationAction) {
+						ProgressView()
 					}
 				}
 			}
@@ -235,4 +210,5 @@ struct SourcesAddView: View {
 		
 		return results
 	}
+
 }
