@@ -11,12 +11,11 @@ import Foundation
 import BackgroundTasks
 import CryptoKit
 
-@available(iOS 26.0, *)
+@available(iOS 13.0, *)
 class BackgroundTaskManager: ObservableObject {
     static let shared = BackgroundTaskManager()
     
     private let baseId = "\(Bundle.main.bundleIdentifier!).userTask"
-    
     private var activeTasks: [String: BGContinuedProcessingTask] = [:]
     private var registeredTasks: Set<String> = []
     
@@ -43,7 +42,7 @@ class BackgroundTaskManager: ObservableObject {
         do {
             try BGTaskScheduler.shared.submit(request)
         } catch {
-            print(error)
+            print("Error submitting task: \(error.localizedDescription)")
         }
     }
     
