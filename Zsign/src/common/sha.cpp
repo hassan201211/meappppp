@@ -6,6 +6,7 @@ bool ZSHA::SHA1(uint8_t* data, size_t size, string& strOutput)
 {
 	strOutput.clear();
 	uint8_t hash[20];
+	memset(hash, 0, 20);
 	::SHA1(data, size, hash);
 	strOutput.append((const char*)hash, 20);
 	return true;
@@ -15,6 +16,7 @@ bool ZSHA::SHA256(uint8_t* data, size_t size, string& strOutput)
 {
 	strOutput.clear();
 	uint8_t hash[32];
+	memset(hash, 0, 32);
 	::SHA256(data, size, hash);
 	strOutput.append((const char*)hash, 32);
 	return true;
@@ -42,13 +44,11 @@ bool ZSHA::SHA1Text(const string& strData, string& strOutput)
 	string strSHASum;
 	ZSHA::SHA1(strData, strSHASum);
 
-	static const char hex_lower[] = "0123456789abcdef";
 	strOutput.clear();
-	strOutput.reserve(strSHASum.size() * 2);
+	char buf[16] = { 0 };
 	for (size_t i = 0; i < strSHASum.size(); i++) {
-		uint8_t c = (uint8_t)strSHASum[i];
-		strOutput += hex_lower[c >> 4];
-		strOutput += hex_lower[c & 0x0F];
+		snprintf(buf, sizeof(buf), "%02x", (uint8_t)strSHASum[i]);
+		strOutput += buf;
 	}
 	return (!strOutput.empty());
 }

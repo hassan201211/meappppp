@@ -15,7 +15,10 @@ test/packages/*
 *.vcxproj.user
 .theos/
 packages/
-CLAUDE.md
-.claude/
-compile_commands.json
-.cache/
+/Packages
+xcuserdata/
+DerivedData/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
+Package.resolved

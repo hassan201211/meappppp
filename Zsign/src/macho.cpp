@@ -83,7 +83,7 @@ bool ZMachO::OpenFile(const char* szPath)
 				return false;
 			}
 		} else {
-			ZLog::ErrorV(">>> Invalid mach-o file (magic: 0x%08x)!\n", magic);
+			ZLog::ErrorV(">>> Invalid mach-o file (2)!\n");
 			return false;
 		}
 	}
@@ -232,7 +232,7 @@ bool ZMachO::ReallocCodeSignSpace()
 
 		for (size_t i = 0; i < arrArches.size(); i++) {
 			size_t sSize = 0;
-			string strNewArchOFile = m_strFile + ".archo." + std::to_string(i);
+			string strNewArchOFile = m_strFile + ".archo." + jvalue((int)i).as_string();
 			uint8_t* pData = (uint8_t*)ZFile::MapFile(strNewArchOFile.c_str(), 0, 0, &sSize, true);
 			if (NULL == pData) {
 				ZFile::RemoveFile(strNewFatMachOFile.c_str());
@@ -272,9 +272,44 @@ bool ZMachO::InjectDylib(bool bWeakInject, const char* szDylibFile)
 	return true;
 }
 
-void ZMachO::RemoveDylibs(const set<string>& setDylibs)
-{
+bool ZMachO::ChangeDylibPath(const char *oldPath, const char *newPath) {
+	ZLog::WarnV(">>> Change DyLib Path: %s -> %s ... \n", oldPath, newPath);
+	
+	bool pathChanged = true;
 	for (size_t i = 0; i < m_arrArchOes.size(); i++) {
-		m_arrArchOes[i]->RemoveDylibs(setDylibs);
+		if (!m_arrArchOes[i]->ChangeDylibPath(oldPath, newPath)) {
+			ZLog::Error(">>> Failed to change path in one of the architectures!\n");
+			pathChanged = false;
+		}
 	}
+	
+	if (pathChanged) {
+		ZLog::Warn(">>> Successfully changed all dylib paths!\n");
+	}
+	return pathChanged;
+}
+
+std::vector<std::string> ZMachO::ListDylibs() {
+	std::vector<std::string> dylibList;
+	
+	for (size_t i = 0; i < m_arrArchOes.size(); i++) {
+		std::vector<std::string> archDylibs = m_arrArchOes[i]->ListDylibs();
+		dylibList.insert(dylibList.end(), archDylibs.begin(), archDylibs.end());
+	}
+	
+	ZLog::WarnV(">>> Found %zu dylibs:\n", dylibList.size());
+	
+	return dylibList;
+}
+
+bool ZMachO::RemoveDylib(const std::set<std::string> &dylibNames) {
+	ZLog::Warn(">>> Removing specified dylibs...\n");
+	
+	bool removalSuccessful = true;
+	for (size_t i = 0; i < m_arrArchOes.size(); i++) {
+		m_arrArchOes[i]->RemoveDylibs(dylibNames);
+	}
+	
+	ZLog::Warn(">>> Finished removing specified dylibs!\n");
+	return removalSuccessful;
 }
