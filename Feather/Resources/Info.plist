@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDisplayName</key>
+	<string>SY STORE</string>
+	<key>CFBundleName</key>
+	<string>SY STORE</string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER).userTask.*</string>
@@ -10,7 +14,7 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeIconFile</key>
-			<string>feather_extension</string>
+			<string>AppIcon</string>
 			<key>CFBundleTypeName</key>
 			<string>iOS Package Archive</string>
 			<key>CFBundleTypeRole</key>
@@ -19,12 +23,12 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>thewonderofyou.Feather.ipa</string>
+				<string>com.systore.ipa</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeIconFile</key>
-			<string>feather_extension</string>
+			<string>AppIcon</string>
 			<key>CFBundleTypeName</key>
 			<string>AirDrop friendly iOS app</string>
 			<key>CFBundleTypeRole</key>
@@ -33,69 +37,12 @@
 			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>thewonderofyou.Feather.tipa</string>
+				<string>com.systore.tipa</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
-		<key>CFBundleAlternateIcons</key>
-		<dict>
-			<key>Donor</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Donor</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>V0</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>V0</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>V1</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>V1</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>V1Mac</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>V1Mac</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>V2Mac</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>V2Mac</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Wing</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Wing</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-		</dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
@@ -105,19 +52,29 @@
 			<key>UIPrerenderedIcon</key>
 			<false/>
 		</dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>V1</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>V1</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+		</dict>
 	</dict>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>CFBundleURLIconFile</key>
-			<string>feather_extension</string>
 			<key>CFBundleURLName</key>
-			<string>thewonderofyou.Feather</string>
+			<string>com.systore</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>feather</string>
+				<string>systore</string>
 			</array>
 		</dict>
 	</array>
@@ -145,14 +102,14 @@
 			<key>UTTypeDescription</key>
 			<string>iOS Package Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>feather_extension</string>
+			<string>AppIcon</string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconText</key>
 				<string>IPA</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>thewonderofyou.Feather.ipa</string>
+			<string>com.systore.ipa</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -175,7 +132,7 @@
 			<key>UTTypeDescription</key>
 			<string>AirDrop friendly iOS app</string>
 			<key>UTTypeIconFile</key>
-			<string>feather_extension</string>
+			<string>AppIcon</string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconBadgeName</key>
@@ -184,7 +141,7 @@
 				<string>TIPA</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>thewonderofyou.Feather.tipa</string>
+			<string>com.systore.tipa</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -198,18 +155,10 @@
 			</dict>
 		</dict>
 	</array>
-<key>NSAppTransportSecurity</key>
-<dict>
-    <key>NSExceptionDomains</key>
-    <dict>
-        <key>claration.dev</key>
-        <dict>
-            <key>NSIncludesSubdomains</key>
-            <true/>
-            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-            <true/>
-        </dict>
-    </dict>
-</dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

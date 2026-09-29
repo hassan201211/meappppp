@@ -7,7 +7,7 @@
 
 import CoreData
 import UIKit.UIImpactFeedbackGenerator
-import Zsign
+import ZsignSwift
 
 // MARK: - Class extension: certificate
 extension Storage {

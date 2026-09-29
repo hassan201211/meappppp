@@ -91,7 +91,8 @@ extension AppIconView {
 				)
 				
 				if currentIcon == icon.key {
-					Image(systemName: "checkmark").bold()
+					Image(systemName: "checkmark")
+						.font(.system(size: 16, weight: .bold)) // تم التعديل لدعم iOS 15
 				}
 			}
 		}

@@ -57,7 +57,8 @@ public struct NBToolbarButton: ToolbarContent {
 			self._title = .localized("Close")
 			self._icon = "xmark"
 			self._style = .icon
-			self._placement = .topBarTrailing
+            // 🔥 تم التعديل هنا ليتوافق مع iOS 15 وما فوق
+			self._placement = .navigationBarTrailing
 		}
 	}
 	

@@ -87,7 +87,8 @@ extension ServerInstaller {
 	static func getUrl(_ name: String, ext: String) -> URL? {
 		let fileManager = FileManager.default
 		
-		let documentsURL = URL.documentsDirectory.appendingPathComponent("\(name).\(ext)")
+        // 🔥 تم التعديل هنا ليدعم iOS 15 وتجنب Error 65
+		let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(name).\(ext)")
 		let bundlesURL = Bundle.main.url(forResource: name, withExtension: ext)
 		
 		if fileManager.fileExists(atPath: documentsURL.path) {

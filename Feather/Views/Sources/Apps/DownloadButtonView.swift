@@ -1,8 +1,9 @@
 //
 //  DownloadButtonView.swift
-//  Feather
+//  SY STORE
 //
 //  Created by samsam on 7/25/25.
+//  Modified for SY STORE.
 //
 
 import SwiftUI
@@ -11,8 +12,6 @@ import AltSourceKit
 import NimbleViews
 
 struct DownloadButtonView: View {
-	let sourceURL: URL?
-	let source: ASRepository?
 	let app: ASRepository.App
 	@ObservedObject private var downloadManager = DownloadManager.shared
 
@@ -28,11 +27,11 @@ struct DownloadButtonView: View {
 						.stroke(Color.accentColor, style: StrokeStyle(lineWidth: 2.3, lineCap: .round))
 						.rotationEffect(.degrees(-90))
 						.frame(width: 31, height: 31)
-						.animation(.smooth, value: downloadProgress)
+                        .safeSmoothAnimation(value: downloadProgress)
 
 					Image(systemName: downloadProgress >= 0.75 ? "archivebox" : "square.fill")
 						.foregroundStyle(.tint)
-						.font(.footnote).bold()
+						.font(.footnote.weight(.bold))
 				}
 				.onTapGesture {
 					if downloadProgress <= 0.75 {
@@ -43,20 +42,17 @@ struct DownloadButtonView: View {
 			} else {
 				Button {
 					if let url = app.currentDownloadUrl {
-						_ = downloadManager.startDownload(
-							from: url,
-							id: app.currentUniqueId,
-							sourceProvenance: _sourceProvenance()
-						)
+                        // 🔥 هنا أضفنا (autoSign: true) ليفهم النظام أننا نريد التوقيع التلقائي!
+						_ = downloadManager.startDownload(from: url, id: app.currentUniqueId, autoSign: true)
 					}
 				} label: {
-					Text(.localized("Get"))
+					Text("تنزيل") 
 						.lineLimit(0)
-						.font(.headline.bold())
-						.foregroundStyle(Color.accentColor)
-						.padding(.horizontal, 24)
+						.font(.headline.weight(.bold))
+						.foregroundStyle(Color.accentColor) 
+						.padding(.horizontal, 22) 
 						.padding(.vertical, 6)
-						.background(Color(uiColor: .quaternarySystemFill))
+						.background(Color(uiColor: .tertiarySystemFill)) 
 						.clipShape(Capsule())
 				}
 				.buttonStyle(.borderless)
@@ -88,9 +84,16 @@ struct DownloadButtonView: View {
 			downloadProgress = download.overallProgress
 		}
 	}
-	
-	private func _sourceProvenance() -> SourceAppProvenance? {
-		guard let source else { return nil }
-		return SourceAppProvenance(sourceURL: sourceURL, repository: source, app: app)
-	}
+}
+
+// MARK: - Compatibility Extensions
+private extension View {
+    @ViewBuilder
+    func safeSmoothAnimation<V: Equatable>(value: V) -> some View {
+        if #available(iOS 17.0, *) {
+            self.animation(.smooth, value: value)
+        } else {
+            self.animation(.easeInOut, value: value)
+        }
+    }
 }

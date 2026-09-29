@@ -50,7 +50,7 @@ struct SourcesAddView: View {
 		"https://stikdebug.xyz/index.json",
 		"https://apps.manicemu.site/altstore",
 		"https://alt.crystall1ne.dev"
-	].map { URL(string: $0)! }
+	].compactMap { URL(string: $0) }
 	
 	@State private var _isImporting = false
 	@State private var _sourceURL = ""
@@ -64,19 +64,23 @@ struct SourcesAddView: View {
 						.keyboardType(.URL)
 						.textInputAutocapitalization(.never)
 				} footer: {
-					Text(.localized("The only supported repositories are AltStore repositories."))
-					Text(verbatim: "[\(String.localized("Learn more about how to setup a repository..."))](https://faq.altstore.io/developers/make-a-source)")
+					VStack(alignment: .leading, spacing: 4) {
+						Text(.localized("The only supported repositories are AltStore repositories."))
+						Text(verbatim: "[\(String.localized("Learn more about how to setup a repository..."))](https://faq.altstore.io/developers/make-a-source)")
+					}
 				}
 				
 				Section {
-					Button(.localized("Import"), systemImage: "square.and.arrow.down") {
+					Button {
 						_isImporting = true
 						_fetchImportedRepositories(UIPasteboard.general.string) {
 							dismiss()
 						}
+					} label: {
+						Label(.localized("Import"), systemImage: "square.and.arrow.down")
 					}
 					
-					Button(.localized("Export"), systemImage: "doc.on.doc") {
+					Button {
 						let sources = Storage.shared.getSources()
 						guard !sources.isEmpty else {
 							UIAlertController.showAlertWithOk(
@@ -94,6 +98,8 @@ struct SourcesAddView: View {
 						) {
 							dismiss()
 						}
+					} label: {
+						Label(.localized("Export"), systemImage: "doc.on.doc")
 					}
 				} footer: {
 					Text(.localized("Supports importing from KravaSign/MapleSign and ESign."))
@@ -102,20 +108,29 @@ struct SourcesAddView: View {
 				if !_filteredRecommendedSourcesData.isEmpty {
 					NBSection(.localized("Featured")) {
 						ForEach(_filteredRecommendedSourcesData, id: \.url) { (url, source) in
-							HStack(spacing: 2) {
+							HStack {
 								FRIconCellView(
 									title: source.name ?? .localized("Unknown"),
-									subtitle: url.absoluteString,
+									subtitle: url.host ?? url.absoluteString,
 									iconUrl: source.currentIconURL
 								)
+								
+								Spacer()
+								
 								Button {
 									Storage.shared.addSource(url, repository: source) { _ in
 										_refreshFilteredRecommendedSourcesData()
 									}
 								} label: {
-									NBButton(.localized("Add"), systemImage: "arrow.down", style: .text)
+									Text(.localized("Add"))
+										.font(.subheadline.weight(.bold))
+										.padding(.horizontal, 12)
+										.padding(.vertical, 6)
+										.background(Color.accentColor.opacity(0.1))
+										.clipShape(Capsule())
 								}
 							}
+							.padding(.vertical, 2)
 						}
 					} footer: {
 						Text(.localized("Open an [issue](https://github.com/claration/Feather/issues) on GitHub if you want your source to be featured."))
@@ -123,22 +138,32 @@ struct SourcesAddView: View {
 				}
 			}
 			.toolbar {
-				NBToolbarButton(role: .cancel)
-				
-				if !_isImporting {
-					NBToolbarButton(
-						.localized("Save"),
-						style: .text,
-						placement: .confirmationAction,
-						isDisabled: _sourceURL.isEmpty
-					) {
-						FR.handleSource(_sourceURL) {
-							dismiss()
-						}
+				ToolbarItem(placement: .navigationBarLeading) {
+					Button {
+						dismiss()
+					} label: {
+						Image(systemName: "xmark")
+                            // 🔥 تم استبدال fontWeight هنا لتدعم iOS 15
+							.font(.body.weight(.semibold))
 					}
-				} else {
-					ToolbarItem(placement: .confirmationAction) {
-						ProgressView()
+				}
+				
+				ToolbarItem(placement: .navigationBarTrailing) {
+					HStack {
+						if !_isImporting {
+							Button {
+								FR.handleSource(_sourceURL) {
+									dismiss()
+								}
+							} label: {
+								Text(.localized("Save"))
+                                    // 🔥 تم استبدال fontWeight هنا لتدعم iOS 15
+									.font(.body.weight(.semibold))
+							}
+							.disabled(_sourceURL.isEmpty)
+						} else {
+							ProgressView()
+						}
 					}
 				}
 			}
@@ -210,5 +235,4 @@ struct SourcesAddView: View {
 		
 		return results
 	}
-
 }

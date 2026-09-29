@@ -60,14 +60,6 @@ extension LibraryInfoView {
 			if let date = app.date {
 				_infoCell(.localized("Date Added"), desc: date.formatted())
 			}
-			
-			if 
-				let name = app.name, 
-				let appDirectory = Storage.shared.getAppDirectory(for: app),
-				let appMinimumOS = Bundle(url: appDirectory)?.minimumOSVersion
-			{
-				_infoCell(.localized("Minimum OS"), desc: appMinimumOS)
-			}
 		}
 	}
 	
@@ -100,33 +92,25 @@ extension LibraryInfoView {
 			NavigationLink(.localized("Dylibs")) {
 				SigningDylibView(app: app, options: .constant(nil))
 			}
-			NavigationLink(.localized("Entitlements")) {
-				if 
-					let path = Bundle(url: Storage.shared.getAppDirectory(for: app)!)?.executableURL?.path,
-					let data = LCGetMachOEntitlements(path),
-					let rawDict = (try? PropertyListSerialization.propertyList(
-						from: data,
-						options: [],
-						format: nil
-					)) as? [String: Any] 
-				{
-					let binaryEntitlementsDict = rawDict.mapValues { AnyCodable($0) }
-					CertificatesInfoEntitlementView(entitlements: binaryEntitlementsDict)
-				} else {
-					Text(.localized("No Entitlements listed."))
-						.font(.footnote)
-						.foregroundColor(.disabled())
-				}
-			}
 		}
 	}
 	
 	@ViewBuilder
 	private func _infoCell(_ title: String, desc: String) -> some View {
-		LabeledContent(title) {
-			Text(desc)
-		}
-		.copyableText(desc)
+        // حل مشكلة LabeledContent لضمان التوافق مع iOS 15
+        if #available(iOS 16.0, *) {
+            LabeledContent(title) {
+                Text(desc)
+            }
+            .copyableText(desc)
+        } else {
+            HStack {
+                Text(title)
+                Spacer()
+                Text(desc)
+                    .foregroundColor(.secondary)
+            }
+            .copyableText(desc)
+        }
 	}
 }
-

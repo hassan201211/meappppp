@@ -86,7 +86,7 @@ extension ResetView {
 		Section {
 			Button(.localized("Reset Sources"), systemImage: "xmark.circle") {
 				Self.resetAlert(
-					title: .localized("Reset Sources"),
+					title: .localized("Reset Signed Apps"),
 					message: Storage.shared.countContent(for: AltSource.self)
 				) {
 					Self.resetSources()
@@ -147,9 +147,10 @@ extension ResetView {
 		let fileManager = FileManager.default
 		let tmpDirectory = fileManager.temporaryDirectory
 		
-		if let files = try? fileManager.contentsOfDirectory(atPath: tmpDirectory.path()) {
+        // تم استبدال .path() بـ .path ليدعم iOS 15
+		if let files = try? fileManager.contentsOfDirectory(atPath: tmpDirectory.path) {
 			for file in files {
-				try? fileManager.removeItem(atPath: tmpDirectory.appendingPathComponent(file).path())
+				try? fileManager.removeItem(atPath: tmpDirectory.appendingPathComponent(file).path)
 			}
 		}
 	}
@@ -172,13 +173,11 @@ extension ResetView {
 	}
 	
 	static func deleteSignedApps() {
-		Storage.shared.deleteSourceMetadata(kind: .signed)
 		Storage.shared.clearContext(request: Signed.fetchRequest())
 		try? FileManager.default.removeFileIfNeeded(at: FileManager.default.signed)
 	}
 	
 	static func deleteImportedApps() {
-		Storage.shared.deleteSourceMetadata(kind: .imported)
 		Storage.shared.clearContext(request: Imported.fetchRequest())
 		try? FileManager.default.removeFileIfNeeded(at: FileManager.default.unsigned)
 	}

@@ -7,7 +7,7 @@
 
 import SwiftUI
 import NimbleViews
-import Zsign
+import ZsignSwift
 
 // MARK: - View
 struct CertificatesInfoView: View {
@@ -106,10 +106,20 @@ extension CertificatesInfoView {
 	
 	@ViewBuilder
 	private func _info(_ title: String, description: String) -> some View {
-		LabeledContent(title) {
-			Text(description)
+		if #available(iOS 16.0, *) {
+			LabeledContent(title) {
+				Text(description)
+			}
+			.copyableText(description)
+		} else {
+			HStack {
+				Text(title)
+				Spacer()
+				Text(description)
+					.foregroundColor(.secondary)
+			}
+			.copyableText(description)
 		}
-		.copyableText(description)
 	}
 	
 	@ViewBuilder

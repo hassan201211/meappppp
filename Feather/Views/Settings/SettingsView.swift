@@ -1,6 +1,6 @@
 //
 //  SettingsView.swift
-//  Feather
+//  SY STORE
 //
 //  Created by samara on 10.04.2025.
 //
@@ -11,134 +11,95 @@ import UIKit
 import Darwin
 import IDeviceSwift
 
-// MARK: - View
-struct SettingsView: View {
-	@AppStorage("feather.selectedCert") private var _storedSelectedCert: Int = 0
-	@State private var _currentIcon: String? = UIApplication.shared.alternateIconName
-	
-	// MARK: Fetch
-	@FetchRequest(
-		entity: CertificatePair.entity(),
-		sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
-		animation: .snappy
-	) private var _certificates: FetchedResults<CertificatePair>
-	
-	private var selectedCertificate: CertificatePair? {
-		guard
-			_storedSelectedCert >= 0,
-			_storedSelectedCert < _certificates.count
-		else {
-			return nil
-		}
-		return _certificates[_storedSelectedCert]
-	}
-
-    
-	private let _donationsUrl = "https://github.com/sponsors/claration"
-	private let _githubUrl = "https://github.com/claration/Feather"
-    
-	// MARK: Body
-	var body: some View {
-		NBNavigationView(.localized("Settings")) {
-			Form {
-				#if !NIGHTLY && !DEBUG
-					SettingsDonationCellView(site: _donationsUrl)
-				#endif
-                
-				_feedback()
-                
-				Section {
-					NavigationLink(destination: AppearanceView()) {
-						Label(.localized("Appearance"), systemImage: "paintbrush")
-					}
-					NavigationLink(destination: AppIconView(currentIcon: $_currentIcon)) {
-						Label(.localized("App Icon"), systemImage: "app.badge")
-					}
-				}
-                
-				NBSection(.localized("Certificates")) {
-                    
-					if let cert = selectedCertificate {
-						CertificatesCellView(cert: cert)
-					} else {
-						Text(.localized("No Certificate"))
-							.font(.footnote)
-							.foregroundColor(.disabled())
-					}
-					NavigationLink(destination: CertificatesView()) {
-						Label(.localized("Certificates"), systemImage: "checkmark.seal")
-					}
-                 
-				} footer: {
-					Text(.localized("Add and manage certificates used for signing applications."))
-				}
-                
-				NBSection(.localized("Features")) {
-					NavigationLink(destination: ConfigurationView()) {
-						Label(.localized("Signing Options"), systemImage: "signature")
-					}
-					NavigationLink(destination: ArchiveView()) {
-						Label(.localized("Archive & Compression"), systemImage: "archivebox")
-					}
-					NavigationLink(destination: InstallationView()) {
-						Label(.localized("Installation"), systemImage: "arrow.down.circle")
-					}
-				} footer: {
-					Text(.localized("Configure the apps way of installing, its zip compression levels, and custom modifications to apps."))
-				}
-                
-				_directories()
-                
-				Section {
-					NavigationLink(destination: ResetView()) {
-						Label(.localized("Reset"), systemImage: "trash")
-					}
-				} footer: {
-					Text(.localized("Reset the applications sources, certificates, apps, and general contents."))
-				}
-			}
-		}
-	}
+// MARK: - جلب الرقم المصنعي الدقيق للجهاز
+extension UIDevice {
+    var exactModelName: String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return identifier
+    }
 }
 
-// MARK: - View extension
-extension SettingsView {
-	@ViewBuilder
-	private func _feedback() -> some View {
-		Section {
-			NavigationLink(destination: AboutView()) {
-				Label {
-					Text(verbatim: .localized("About %@", arguments: Bundle.main.name))
-				} icon: {
-					FRAppIconView(size: 23)
-				}
-			}
-            
-			Button(.localized("Submit Feedback"), systemImage: "safari") {
-				UIApplication.open(URL(string: "\(_githubUrl)/issues/new/choose")!)
-			}
-			Button(.localized("GitHub Repository"), systemImage: "safari") {
-				UIApplication.open(_githubUrl)
-			}
-		} footer: {
-			Text(.localized("If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."))
-		}
-	}
+// MARK: - View
+struct SettingsView: View {
+    @AppStorage("systore.selectedCert") private var _storedSelectedCert: Int = 0
     
-	@ViewBuilder
-	private func _directories() -> some View {
-		NBSection(.localized("Misc")) {
-			Button(.localized("Open Documents"), systemImage: "folder") {
-				UIApplication.open(URL.documentsDirectory.toSharedDocumentsURL()!)
-			}
-			Button(.localized("Open Archives"), systemImage: "folder") {
-				UIApplication.open(FileManager.default.archives.toSharedDocumentsURL()!)
-			}
-			Button(.localized("Open Certificates"), systemImage: "folder") {
-				UIApplication.open(FileManager.default.certificates.toSharedDocumentsURL()!)
-			}
-		} footer: {
-			Text(.localized("All of the apps files are contained in the documents directory, here are some quick links to these."))
-		}
-	}
+    @FetchRequest(
+        entity: CertificatePair.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
+        animation: .snappy
+    ) private var _certificates: FetchedResults<CertificatePair>
+    
+    private var selectedCertificate: CertificatePair? {
+        guard _storedSelectedCert >= 0, _storedSelectedCert < _certificates.count else { return nil }
+        return _certificates[_storedSelectedCert]
+    }
+
+    var body: some View {
+        NBNavigationView("الإعدادات") {
+            Form {
+                _aboutSection()
+                
+                Section {
+                    NavigationLink(destination: AppearanceView()) {
+                        Label("المظهر", systemImage: "paintbrush")
+                    }
+                }
+                
+                NBSection("الشهادات") {
+                    if let cert = selectedCertificate {
+                        CertificatesCellView(cert: cert)
+                    } else {
+                        Text("لا توجد شهادة")
+                            .font(.footnote)
+                            .foregroundColor(.disabled())
+                    }
+                    NavigationLink(destination: CertificatesView()) {
+                        Label("الشهادات", systemImage: "checkmark.seal")
+                    }
+                } footer: {
+                    Text("أضف وأدر الشهادات المستخدمة لتوقيع التطبيقات.")
+                }
+                
+                NBSection("الميزات") {
+                    NavigationLink(destination: ConfigurationView()) {
+                        Label("خيارات التوقيع", systemImage: "signature")
+                    }
+                    NavigationLink(destination: InstallationView()) {
+                        Label("التثبيت", systemImage: "arrow.down.circle")
+                    }
+                } footer: {
+                    Text("تكوين طريقة التثبيت والتعديلات المخصصة على التطبيقات.")
+                }
+                
+                Section {
+                    NavigationLink(destination: ResetView()) {
+                        Label("إعادة تعيين", systemImage: "trash")
+                    }
+                } footer: {
+                    Text("إعادة تعيين الشهادات والتطبيقات والمحتويات العامة.")
+                }
+            }
+        }
+    }
+}
+
+extension SettingsView {
+    @ViewBuilder
+    private func _aboutSection() -> some View {
+        Section {
+            NavigationLink(destination: AboutView()) {
+                // تمت إزالة الصورة المخصصة والاكتفاء بأيقونة النظام أو نص فقط
+                Label("حول التطبيق", systemImage: "info.circle.fill")
+                
+                // ملاحظة: إذا كنت تريد النص فقط بدون أي أيقونة، يمكنك استبدال السطر أعلاه بـ:
+                // Text("حول التطبيق")
+            }
+        }
+    }
 }

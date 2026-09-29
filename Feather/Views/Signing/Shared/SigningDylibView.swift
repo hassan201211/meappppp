@@ -7,7 +7,7 @@
 
 import SwiftUI
 import NimbleViews
-import Zsign
+import ZsignSwift
 
 // MARK: - View
 struct SigningDylibView: View {

@@ -23,10 +23,20 @@ public struct NBNavigationView<Content>: View where Content: View {
 	}
 	
 	public var body: some View {
-		NavigationStack {
-			_content
-				.navigationTitle(_title)
-				.navigationBarTitleDisplayMode(_mode)
+		if #available(iOS 16.0, *) {
+			NavigationStack {
+				_content
+					.navigationTitle(_title)
+					.navigationBarTitleDisplayMode(_mode)
+			}
+		} else {
+			NavigationView {
+				_content
+					.navigationTitle(_title)
+					.navigationBarTitleDisplayMode(_mode)
+			}
+			// هذا السطر مهم جداً لكي لا تنقسم الشاشة في الآيباد على iOS 15
+			.navigationViewStyle(.stack)
 		}
 	}
 }

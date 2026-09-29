@@ -16,8 +16,11 @@ extension View {
 	) -> some View {
 		if #available(iOS 16.4, *) {
 			self.searchScopes(selection, activation: .onSearchPresentation, content)
-		} else {
+		} else if #available(iOS 16.0, *) {
 			self.searchScopes(selection, scopes: content)
+		} else {
+            // تجاهل الميزة في iOS 15 وإرجاع الواجهة كما هي
+			self
 		}
 	}
 }

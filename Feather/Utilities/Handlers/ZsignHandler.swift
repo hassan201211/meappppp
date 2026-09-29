@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Zsign
+import ZsignSwift
 import UIKit
 
 final class ZsignHandler {
@@ -51,10 +51,8 @@ final class ZsignHandler {
 			p12Password: cert.password ?? "",
 			entitlementsPath: _options.appEntitlementsFile?.path ?? "",
 			removeProvision: !_options.removeProvisioning,
-			completion: { success in
-				if !success {
-					self.hadError = SigningFileHandlerError.signFailed
-				}
+			completion: { _, error in
+				self.hadError = error
 			}
 		)
 	}
@@ -65,10 +63,8 @@ final class ZsignHandler {
 			entitlementsPath: _options.appEntitlementsFile?.path ?? "",
 			adhoc: true,
 			removeProvision: !_options.removeProvisioning,
-			completion: { success in
-				if !success {
-					self.hadError = SigningFileHandlerError.signFailed
-				}
+			completion: { _, error in
+				self.hadError = error
 			}
 		)
 	}

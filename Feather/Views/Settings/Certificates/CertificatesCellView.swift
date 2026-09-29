@@ -35,7 +35,7 @@ struct CertificatesCellView: View {
 			_certInfoPill(data: cert)
 		}
 		.frame(height: 80)
-		.contentTransition(.opacity)
+        .safeContentTransition() // حل مشكلة التوافق هنا
 		.frame(maxWidth: .infinity, alignment: .leading)
 		.onAppear {
 			withAnimation {
@@ -85,4 +85,16 @@ extension CertificatesCellView {
 		
 		return pills
 	}
+}
+
+// MARK: - Compatibility Extensions
+private extension View {
+    @ViewBuilder
+    func safeContentTransition() -> some View {
+        if #available(iOS 16.0, *) {
+            self.contentTransition(.opacity)
+        } else {
+            self
+        }
+    }
 }

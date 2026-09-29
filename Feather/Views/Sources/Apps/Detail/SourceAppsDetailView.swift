@@ -1,8 +1,9 @@
 //
 //  SourceAppsDetailView.swift
-//  Feather
+//  SY STORE
 //
 //  Created by samsam on 7/25/25.
+//  Modified for SY STORE.
 //
 
 import SwiftUI
@@ -23,9 +24,8 @@ struct SourceAppsDetailView: View {
 		downloadManager.getDownload(by: app.currentUniqueId)
 	}
 	
-	let sourceURL: URL?
-	let source: ASRepository
-	let app: ASRepository.App
+	var source: ASRepository
+	var app: ASRepository.App
 	
 	var body: some View {
 		ScrollView {
@@ -34,11 +34,11 @@ struct SourceAppsDetailView: View {
 			}
 			
 			VStack(alignment: .leading, spacing: 10) {
-				HStack(spacing: 10) {
+				HStack(spacing: 15) { // زيادة المسافة قليلاً للتنسيق
 					if let iconURL = app.iconURL {
 						LazyImage(url: iconURL) { state in
 							if let image = state.image {
-								image.appIconStyle(size: 111, isCircle: false)
+								image.appIconStyle(size: 100, isCircle: false) // حجم متناسق 100
 							} else {
 								standardIcon
 							}
@@ -47,18 +47,17 @@ struct SourceAppsDetailView: View {
 						standardIcon
 					}
 
-					VStack(alignment: .leading, spacing: 2) {
+					VStack(alignment: .leading, spacing: 4) {
 						Text(app.currentName)
-							.font(.title2)
-							.fontWeight(.semibold)
+							.font(.title3.weight(.semibold)) // حجم متناسق ومتوافق مع iOS 15
 							.foregroundColor(.primary)
-						Text(app.currentDescription ?? .localized("An awesome application"))
+						Text(app.currentDescription ?? "تطبيق مميز")
 							.font(.subheadline)
 							.foregroundColor(.secondary)
 						
 						Spacer()
 						
-						DownloadButtonView(sourceURL: sourceURL, source: source, app: app)
+						DownloadButtonView(app: app)
 					}
 					.lineLimit(2)
 					.frame(maxWidth: .infinity, alignment: .leading)
@@ -69,95 +68,47 @@ struct SourceAppsDetailView: View {
 				Divider()
                 
 				if let screenshotURLs = app.screenshotURLs {
-					NBSection(.localized("Screenshots")) {
+					NBSection("الصور") {
 						_screenshots(screenshotURLs: screenshotURLs)
 					}
                     
 					Divider()
 				}
-				
-				if
-					let currentVer = app.currentVersion,
-					let whatsNewDesc = app.currentAppVersion?.localizedDescription
-				{
-					NBSection(.localized("What's New")) {
-						AppVersionInfo(
-							version: currentVer,
-							date: app.currentDate?.date,
-							description: whatsNewDesc
-						)
-						if let versions = app.versions {
-							NavigationLink(
-								destination: VersionHistoryView(
-									sourceURL: sourceURL,
-									source: source,
-									app: app,
-									versions: versions
-								)
-									.navigationTitle(.localized("Version History"))
-									.navigationBarTitleDisplayMode(.large)
-							) {
-								Text(.localized("Version History"))
-							}
-						}
-					}
-					
-					Divider()
-				}
-				
-				if let appDesc = app.localizedDescription {
-					NBSection(.localized("Description")) {
-						VStack(alignment: .leading, spacing: 2) {
-							ExpandableText(text: appDesc, lineLimit: 3)
-						}
-						.frame(maxWidth: .infinity, alignment: .leading)
-					}
-					
-					Divider()
-				}
                 
-				NBSection(.localized("Information")) {
+				NBSection("المعلومات") {
 					VStack(spacing: 12) {
-						if let sourceName = source.name {
-							_infoRow(title: .localized("Source"), value: sourceName)
-						}
-                        
-						if let developer = app.developer {
-							_infoRow(title: .localized("Developer"), value: developer)
-						}
-						
 						if let size = app.size {
-							_infoRow(title: .localized("Size"), value: size.formattedByteCount)
+							_infoRow(title: "الحجم", value: size.formattedByteCount)
 						}
 						
 						if let category = app.category {
-							_infoRow(title: .localized("Category"), value: category.capitalized)
+							_infoRow(title: "التصنيف", value: category.capitalized)
 						}
 						
 						if let version = app.currentVersion {
-							_infoRow(title: .localized("Version"), value: version)
+							_infoRow(title: "الإصدار", value: version)
 						}
 						
 						if let date = app.currentDate?.date {
-							_infoRow(title: .localized("Updated"), value: DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none))
+							_infoRow(title: "تاريخ التحديث", value: DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none))
 						}
 						
 						if let bundleId = app.id {
-							_infoRow(title: .localized("Identifier"), value: bundleId)
+							_infoRow(title: "المعرّف", value: bundleId)
 						}
 					}
 				}
 				
 				if let appPermissions = app.appPermissions {
-					NBSection(.localized("Permissions")) {
+					NBSection("الصلاحيات") {
 						Group {
 							if let entitlements = appPermissions.entitlements {
 								NBTitleWithSubtitleView(
-									title: .localized("Entitlements"),
+									title: "التصريحات",
 									subtitle: entitlements.map(\.name).joined(separator: "\n")
 								)
 							} else {
-								Text(.localized("No Entitlements listed."))
+								Text("لا توجد تصريحات مسجلة.")
 									.font(.subheadline)
 									.foregroundStyle(.secondary)
 							}
@@ -169,7 +120,7 @@ struct SourceAppsDetailView: View {
 									)
 								}
 							} else {
-								Text(.localized("No Privacy Permissions listed."))
+								Text("لا توجد صلاحيات خصوصية مسجلة.")
 									.font(.subheadline)
 									.foregroundStyle(.secondary)
 							}
@@ -184,11 +135,7 @@ struct SourceAppsDetailView: View {
 			}
 			.padding([.horizontal, .bottom])
 			.padding(.top, {
-				if #available(iOS 18, *) {
-					8
-				} else {
-					0
-				}
+				if #available(iOS 18, *) { 8 } else { 0 }
 			}())
 		}
 		.flexibleHeaderScrollView()
@@ -200,9 +147,9 @@ struct SourceAppsDetailView: View {
 			) {
 				let sharedString = """
 				\(app.currentName) - \(app.currentVersion ?? "0")
-				\(app.currentDescription ?? .localized("An awesome application"))
+				\(app.currentDescription ?? "تطبيق مميز")
 				---
-				\(source.website?.absoluteString ?? source.name ?? "")
+				تمت المشاركة من SY STORE
 				"""
 				UIActivityViewController.show(activityItems: [sharedString])
 			}
@@ -218,7 +165,7 @@ struct SourceAppsDetailView: View {
 	}
 	
 	var standardIcon: some View {
-		Image("App_Unknown").appIconStyle(size: 111, isCircle: false)
+		Image("App_Unknown").appIconStyle(size: 100, isCircle: false)
 	}
 	
 	var standardHeader: some View {
@@ -299,7 +246,17 @@ extension SourceAppsDetailView {
 	
 	@ViewBuilder
 	private func _infoRow(title: String, value: String) -> some View {
-		LabeledContent(title, value: value)
+        // حل مشكلة LabeledContent لـ iOS 15
+        if #available(iOS 16.0, *) {
+            LabeledContent(title, value: value)
+        } else {
+            HStack {
+                Text(title)
+                Spacer()
+                Text(value)
+                    .foregroundColor(.secondary)
+            }
+        }
 		Divider()
 	}
 	

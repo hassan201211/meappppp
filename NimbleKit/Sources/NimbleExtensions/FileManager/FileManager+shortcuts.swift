@@ -49,7 +49,8 @@ extension FileManager {
 	}
 	
 	static public func forceWrite(content: String, to filename: String) throws {
-		let path = URL.documentsDirectory.appendingPathComponent(filename)
+        // تم التعديل هنا ليدعم iOS 15
+		let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(filename)
 		try content.write(to: path, atomically: true, encoding: .utf8)
 	}
 	

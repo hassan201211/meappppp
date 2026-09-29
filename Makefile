@@ -1,8 +1,7 @@
-NAME := Feather
+NAME := SYSTORE
 SCHEME := Feather
-PLATFORMS := iphoneos maccatalyst
+PLATFORMS := iphoneos
 
-TMP := $(TMPDIR)/$(NAME)
 CERT_JSON_URL := https://backloop.dev/pack.json
 
 .PHONY: all clean deps $(PLATFORMS)
@@ -10,48 +9,44 @@ CERT_JSON_URL := https://backloop.dev/pack.json
 all: $(PLATFORMS)
 
 clean:
-	rm -rf $(TMP)
-	rm -rf packages
-	rm -rf Payload
+	rm -rf build_temp packages Payload _build
 
 deps:
 	rm -rf deps || true
 	mkdir -p deps
-
 	curl -fsSL "$(CERT_JSON_URL)" -o cert.json
 	jq -r '.cert' cert.json > deps/server.crt
 	jq -r '.key1, .key2' cert.json > deps/server.pem
 	jq -r '.info.domains.commonName' cert.json > deps/commonName.txt
 
-
 $(PLATFORMS): deps
-	rm -rf _build
+	rm -rf _build build_temp packages
+	mkdir -p _build/Payload packages
 
-	@if [ "$@" = "iphoneos" ]; then \
-		DEST="generic/platform=iOS"; \
-	else \
-		DEST="generic/platform=macOS,variant=Mac Catalyst"; \
-	fi; \
+	@set -e; \
 	xcodebuild \
 		-project Feather.xcodeproj \
 		-scheme $(SCHEME) \
 		-configuration Release \
-		-destination "$$DEST" \
-		-derivedDataPath $(TMP)/$@ \
+		-destination "generic/platform=iOS" \
+		-derivedDataPath build_temp \
 		-skipPackagePluginValidation \
 		CODE_SIGNING_ALLOWED=NO \
-		ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
-
-	mkdir -p _build/Payload
-	cp -R _build/Applications/*.app _build/Payload/Feather.app
-	chmod -R 0755 _build/Payload/Feather.app
-	codesign --force --sign - --timestamp=none _build/Payload/Feather.app
-	cp deps/* _build/Payload/Feather.app/ || true
-
-	mkdir -p packages
-
-	@if [ "$@" = "iphoneos" ]; then \
-		ditto -c -k --sequesterRsrc --keepParent _build/Payload "packages/Feather.ipa"; \
-	else \
-		ditto -c -k --sequesterRsrc --keepParent _build/Payload/Feather.app "packages/Feather_Catalyst.zip"; \
-	fi
+		ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO \
+		IPHONEOS_DEPLOYMENT_TARGET=15.0; \
+	\
+	echo "🔍 جاري البحث عن ملف التطبيق..."; \
+	APP_PATH=$$(find . -name "Feather.app" -type d | grep -v "Payload" | head -n 1); \
+	if [ -z "$$APP_PATH" ]; then \
+		echo "❌ خطأ: لم يتم العثور على التطبيق!"; \
+		exit 1; \
+	fi; \
+	echo "✅ تم العثور على التطبيق في المسار: $$APP_PATH"; \
+	\
+	cp -R "$$APP_PATH" _build/Payload/Feather.app; \
+	chmod -R 0755 _build/Payload/Feather.app; \
+	codesign --force --sign - --timestamp=none _build/Payload/Feather.app; \
+	cp deps/* _build/Payload/Feather.app/ || true; \
+	\
+	ditto -c -k --sequesterRsrc --keepParent _build/Payload "packages/$(NAME).ipa"; \
+	echo "🎉 تم إنشاء ملف الـ IPA بنجاح!"

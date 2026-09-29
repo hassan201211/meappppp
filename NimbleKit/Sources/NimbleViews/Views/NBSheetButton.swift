@@ -56,7 +56,7 @@ public struct NBSheetButton: View {
 		.foregroundColor(foregroundColor)
 		.clipShape(RoundedRectangle(cornerRadius: _cornerRadius, style: .continuous))
 		.contentShape(RoundedRectangle(cornerRadius: _cornerRadius, style: .continuous))
-		.fontWeight(.semibold)
+		.safeFontWeight()
 		.frame(height: 50)
 	}
 	
@@ -109,4 +109,14 @@ private extension View {
 			fallback
 		}
 	}
+    
+    // إضافة لضمان توافق وزن الخط مع iOS 15
+    @ViewBuilder
+    func safeFontWeight() -> some View {
+        if #available(iOS 16.0, *) {
+            self.fontWeight(.semibold)
+        } else {
+            self.font(.body.weight(.semibold))
+        }
+    }
 }

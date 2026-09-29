@@ -119,18 +119,6 @@
             }
           }
         },
-        "ko" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld개 앱"
-                }
-              }
-            }
-          }
-        },
         "pl" : {
           "variations" : {
             "plural" : {
@@ -310,18 +298,6 @@
             }
           }
         },
-        "ko" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld일"
-                }
-              }
-            }
-          }
-        },
         "pl" : {
           "variations" : {
             "plural" : {
@@ -424,12 +400,6 @@
             "value" : "%lld dylibs di sistema richiesti non mostrati."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "필요한 시스템 Dylib %lld개가 표시되지 않았습니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -439,7 +409,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld gerekli sistem dylib kütüphanesi gizlendi."
+            "value" : "%lld gerekli sistem dylib kütüphanesi gösterilmiyor."
           }
         },
         "vi" : {
@@ -544,12 +514,6 @@
             }
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld개 소스"
-          }
-        },
         "pl" : {
           "variations" : {
             "plural" : {
@@ -639,12 +603,6 @@
             "value" : "💜 Questo non era stato possibile creare senza i miei sostenitori!"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "💜 후원자분들이 아니었다면 이 일을 해낼 수 없었을 거예요!"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -710,12 +668,6 @@
             "value" : "Informazioni"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "정보"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -768,12 +720,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Informazioni su %@"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@에 대하여"
           }
         },
         "pl" : {
@@ -847,12 +793,6 @@
             "value" : "Aggiungi"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "추가"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -900,22 +840,10 @@
             "value" : "Add and manage certificates used for signing applications."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "애플리케이션 서명에 사용되는 인증서를 추가하고 관리합니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dodawaj i zarządzaj certyfikatami używanymi do podpisywania aplikacji."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uygulamaları imzalamak için kullanılan sertifikaları ekleyin ve yönetin."
           }
         },
         "vi" : {
@@ -971,12 +899,6 @@
             "value" : "Aggiungi Fonte"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "소스 추가"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1028,12 +950,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aggiunge la descrizione tradotta dell'app"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "앱에 대한 현지화된 설명을 추가합니다."
           }
         },
         "pl" : {
@@ -1113,12 +1029,6 @@
             "value" : "Avanzate"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "고급"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1160,22 +1070,10 @@
             "value" : "Advanced Installation Method"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "고급 설치 방법"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zaawansowana metoda instalacji"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gelişmiş Kurulum Yöntemi"
           }
         },
         "vi" : {
@@ -1229,12 +1127,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutte"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "모두"
           }
         },
         "pl" : {
@@ -1300,12 +1192,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutti i file dell'app sono contenute nella cartella dei documenti, ecco alcuni link di quelle."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "모든 앱 파일은 문서 폴더에 포함되어 있으며, 다음은 해당 폴더로 빠르게 갈 수 있는 링크들 입니다."
           }
         },
         "pl" : {
@@ -1374,12 +1260,6 @@
             "value" : "Tutte le fonti"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "모든 저장소"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1443,12 +1323,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Icone alternative"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "대체 아이콘"
           }
         },
         "pl" : {
@@ -1517,12 +1391,6 @@
             "value" : "Una fantastica applicazione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "멋진 애플리케이션"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1532,7 +1400,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Harika bir uygulama"
+            "value" : "Harika bir uygulama."
           }
         },
         "vi" : {
@@ -1588,12 +1456,6 @@
             "value" : "Funzioni dell'app"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "앱 기능"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1633,12 +1495,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Icon"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "앱 아이콘"
           }
         },
         "pl" : {
@@ -1718,12 +1574,6 @@
             "value" : "Aspetto"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "외관"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1795,12 +1645,6 @@
             "value" : "Nome AppID"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "앱ID 이름"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1864,12 +1708,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Archiviazione & Compressione"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "압축 및 보관"
           }
         },
         "pl" : {
@@ -1950,12 +1788,6 @@
             "value" : "Password errata"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "잘못된 비밀번호"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2013,12 +1845,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Migliore"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " 최고"
           }
         },
         "pl" : {
@@ -2098,12 +1924,6 @@
             "value" : "Grande descrizione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "큰 설명"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2132,6 +1952,53 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大号描述"
+          }
+        }
+      }
+    },
+    "Bug Report" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإبلاغ عن مشكلة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bug Report"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segnalazione bug"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgłoś błąd"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hata Raporu"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Báo cáo lỗi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bug报告"
           }
         }
       }
@@ -2173,12 +2040,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pacchetto"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "번들"
           }
         },
         "pl" : {
@@ -2232,12 +2093,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Di default, i titoli tradotti delle app non cambieranno, ma questa opzione lo sostituisce."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "기본적으로 앱의 현지화된 제목은 변경되지 않지만, 이 옵션을 선택하면 기본 설정이 무시됩니다."
           }
         },
         "pl" : {
@@ -2317,12 +2172,6 @@
             "value" : "Cancella"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "취소"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2368,12 +2217,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Category"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "카테고리"
           }
         },
         "pl" : {
@@ -2439,12 +2282,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Certificato"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "인증서"
           }
         },
         "pl" : {
@@ -2525,12 +2362,6 @@
             "value" : "Certificati"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "인증서"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2578,22 +2409,10 @@
             "value" : "Certificates updated successfully."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "인증서가 성공적으로 업데이트되었습니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Certyfikaty zaktualizowano pomyślnie."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sertifikalar başarıyla güncellendi."
           }
         },
         "vi" : {
@@ -2649,12 +2468,6 @@
             "value" : "Cambia"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "변경"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2690,45 +2503,16 @@
             "value" : "Change Nickname"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "표시이름 변경"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zmień nazwę"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Takma Adı Değiştir"
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "修改昵称"
-          }
-        }
-      }
-    },
-    "Check for Updates" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Check for Updates"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprawdź aktualizacje"
           }
         }
       }
@@ -2760,12 +2544,6 @@
             "value" : "Controlla la revocazione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "리보크 확인"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2775,7 +2553,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sertifika İptal Kontrolü"
+            "value" : "İptal Kontrolü"
           }
         },
         "vi" : {
@@ -2832,12 +2610,6 @@
             "value" : "Scegli da File"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "파일에서 선택하기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2847,7 +2619,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dosyalardan Seç"
+            "value" : "Dosyalar’dan Seç"
           }
         },
         "vi" : {
@@ -2904,12 +2676,6 @@
             "value" : "Scegli da Foto"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "사진에서 선택하기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2919,7 +2685,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fotoğraflardan Seç"
+            "value" : "Fotoğraflar’dan Seç"
           }
         },
         "vi" : {
@@ -2975,12 +2741,6 @@
             "value" : "Chiudi"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "닫기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3032,12 +2792,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Completato"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "완료됨"
           }
         },
         "pl" : {
@@ -3106,12 +2860,6 @@
             "value" : "Livello di compressione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "압축 수준"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3163,12 +2911,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Configura il modo dell'installazione delle app, il livello della compressione delle zip, e modifiche personalizzate delle app."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "앱 설치 방식, zip 압축 수준 및 앱에 대한 맞춤 수정 사항을 구성합니다."
           }
         },
         "pl" : {
@@ -3248,12 +2990,6 @@
             "value" : "Copia"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "복사"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3313,12 +3049,6 @@
             "value" : "Copia URL di download"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "다운로드 URL 복사"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3328,7 +3058,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İndirme URL’lerini Kopyala"
+            "value" : "İndirme URL’sini Kopyala"
           }
         },
         "vi" : {
@@ -3396,12 +3126,6 @@
             "value" : "Crediti"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "크레딧"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3449,22 +3173,10 @@
             "value" : "Custom Theme Color"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "맟춤 테마 색상"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Niestandardowy Kolor Motywu"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Özel Tema Rengi"
           }
         },
         "vi" : {
@@ -3520,12 +3232,6 @@
             "value" : "Personalizzazione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "맞춤 설정"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3571,12 +3277,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dark"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "다크"
           }
         },
         "pl" : {
@@ -3642,12 +3342,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Data"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "날짜"
           }
         },
         "pl" : {
@@ -3727,12 +3421,6 @@
             "value" : "Data di aggiunta"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "날짜 추가됨"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3810,12 +3498,6 @@
             "value" : "Predefinito"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "기본"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3873,12 +3555,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aspetto predefinito dell'app, include solamente i sottotitoli."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "앱의 기본 스타일, 설명만 포함"
           }
         },
         "pl" : {
@@ -3958,12 +3634,6 @@
             "value" : "Elimina"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "삭제"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4023,12 +3693,6 @@
             "value" : "Elimina dopo la firma"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명 후 삭제"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4068,12 +3732,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Description"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "설명"
           }
         },
         "pl" : {
@@ -4117,12 +3775,6 @@
             "value" : "Developer"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "개발자"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4145,23 +3797,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开发者"
-          }
-        }
-      }
-    },
-    "Disable Liquid Glass" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Disable Liquid Glass"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wyłącz Liquid Glass"
           }
         }
       }
@@ -4215,12 +3850,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ignora"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "닫기"
           }
         },
         "pl" : {
@@ -4294,12 +3923,6 @@
             "value" : "Nome visualizzato"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "표시 이름"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4315,7 +3938,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Görünen Adlar"
+            "value" : "Görünen Ad"
           }
         },
         "vi" : {
@@ -4328,17 +3951,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "显示名称"
-          }
-        }
-      }
-    },
-    "Do you want to download and install this file?" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Do you want to download and install this file?"
           }
         }
       }
@@ -4362,12 +3974,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vuoi esportare il tuo certificato in un'app esterna? Quell'app potrà firmare app usando il tuo certificato."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "인증서를 외부 앱으로 내보내시겠습니까? 해당 앱은 귀하의 인증서를 사용하여 앱에 서명할 수 있게 됩니다."
           }
         },
         "pl" : {
@@ -4445,12 +4051,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dona"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "후원"
           }
         },
         "pl" : {
@@ -4537,12 +4137,6 @@
             "value" : "Donazioni"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "후원"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4609,12 +4203,6 @@
             "value" : "Scarica StosVPN"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "StosVPN 다운로드"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4637,23 +4225,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下载StosVPN"
-          }
-        }
-      }
-    },
-    "Download Update" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Download Update"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pobierz aktualizację"
           }
         }
       }
@@ -4703,12 +4274,6 @@
             "value" : "Dylibs"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dylibs"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4750,22 +4315,10 @@
             "value" : "Dynamic Icons"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "역동적 아이콘"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dynamiczne Ikony"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dinamik Simgeler"
           }
         },
         "vi" : {
@@ -4807,12 +4360,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abilita Liquid Glass"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Liquid Glass 활성화"
           }
         },
         "pl" : {
@@ -4880,12 +4427,6 @@
             "value" : "Abilitando una qualsiasi protezione aggiunge del testo casuale nell'identificativo del pacchetto dell'app che vuoi firmare, questo per fare in modo che il tuo ID Apple non viene segnalato da Apple. Tuttavia, quando usi un servizio di signing puoi ignorare questo."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "어떤 보호 기능을 활성화하든, 서명하는 앱의 번들 식별자에 임의의 문자열이 추가됩니다. 이는 사용자의 Apple 계정이 Apple 측에서 의심 대상으로 표시되지 않도록 하기 위함입니다. 하지만 서명 서비스를 이용할 경우에는 이 사항을 무시해도 됩니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4938,12 +4479,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ti sta piacendo %@?"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@를 즐기시고 있나요?"
           }
         },
         "pl" : {
@@ -5009,12 +4544,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inserisci un URL per iniziare la verifica."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "검증을 시작하려면 URL를 입력하세요."
           }
         },
         "pl" : {
@@ -5094,12 +4623,6 @@
             "value" : "Inserisci password"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "비밀번호를 입력하세요"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5157,12 +4680,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inserisci URL della Fonte"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "소스 URL를 입력하세요"
           }
         },
         "pl" : {
@@ -5242,12 +4759,6 @@
             "value" : "Inserisci la password associata alla chiave privata. Lascia vuoto se la password non è richiesta."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "개인 키에 설정된 비밀번호를 입력하세요. 비밀번호가 필요하지 않은 경우에는 비워 두세요."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5319,12 +4830,6 @@
             "value" : "Diritti"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "권한"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5376,12 +4881,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Errore"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "오류"
           }
         },
         "pl" : {
@@ -5449,12 +4948,6 @@
             "value" : "Eseguibile"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "실행 파일"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5520,12 +5013,6 @@
             "value" : "Dylibs esistenti"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "기존 Dylib"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5577,12 +5064,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esperimenti"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "실험"
           }
         },
         "pl" : {
@@ -5656,12 +5137,6 @@
             "value" : "Scaduto"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "만료됨"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5733,12 +5208,6 @@
             "value" : "Scade"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "만료"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5805,12 +5274,6 @@
             "value" : "Esporta"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "내보내기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5820,7 +5283,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dışa Aktar"
+            "value" : "Dışarı Aktar"
           }
         },
         "vi" : {
@@ -5856,12 +5319,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esporta certificato"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "인증서 내보내기"
           }
         },
         "pl" : {
@@ -5929,12 +5386,6 @@
             "value" : "Download fallito, controlla la tua connessione e riprova."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "다운로드에 실패했습니다, 인터넷 연결 상태를 확인하고 다시 시도하세요."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5944,7 +5395,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İndirme başarısız oldu. İnternet bağlantınızı kontrol edip tekrar deneyin."
+            "value" : "İndirme sırasında hata oluştu, internet bağlantınızı kontrol edip tekrar deneyin."
           }
         },
         "vi" : {
@@ -5986,12 +5437,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consigliato"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "추천"
           }
         },
         "pl" : {
@@ -6059,12 +5504,6 @@
             "value" : "Funzioni"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "기능"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6129,12 +5568,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Condivisione file"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "파일 공유"
           }
         },
         "pl" : {
@@ -6208,12 +5641,6 @@
             "value" : "Files"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "파일"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6277,12 +5704,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtra come"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "필터 기준"
           }
         },
         "pl" : {
@@ -6350,12 +5771,6 @@
             "value" : "Forza la traduzione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "강제 현지화"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6419,12 +5834,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Frameworks"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "프레임워크"
           }
         },
         "pl" : {
@@ -6492,12 +5901,6 @@
             "value" : "Frameworks & Plugins"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "프레임워크 & 플러그인"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6563,12 +5966,6 @@
             "value" : "Tutto in locale"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "완전한 로컬"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6620,12 +6017,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modalità gioco"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "게임 모드"
           }
         },
         "pl" : {
@@ -6699,12 +6090,6 @@
             "value" : "Generale"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "기본"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6750,12 +6135,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Get"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "받기"
           }
         },
         "pl" : {
@@ -6821,12 +6200,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ottieni l'accesso al nostro server Discord segreto donando, dove parliamo di nuove funzionalità, beta e nuovi modi per rendere la tua esperienza migliore."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "후원을 통해 저희의 비공개 디스코드 서버에 가입하시면, 향후 업데이트, 베타 버전, 그리고 여러분의 이용 경험을 더욱 향상시킬 수 있는 방안에 대해 논의하는 자리에 참여하실 수 있습니다."
           }
         },
         "pl" : {
@@ -6895,12 +6268,6 @@
             "value" : "Ottieni informazioni"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "정보 보기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6952,12 +6319,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inizia aggiungendo la tua prima fonte."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "첫 번째 저장소를 추가하여 시작하세요."
           }
         },
         "pl" : {
@@ -7013,12 +6374,6 @@
             "value" : "Inizia importando il tuo primo file IPA."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "첫 번째 IPA 파일을 가져와 시작하세요."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7070,12 +6425,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importa il tuo primo certificato per iniziare a firmare."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "첫 번째 인증서를 가져와서 서명을 시작하세요."
           }
         },
         "pl" : {
@@ -7155,12 +6504,6 @@
             "value" : "Repository GitHub"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub 저장소"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7218,12 +6561,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vai nel nostro GitHub e dacci una stella!"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "우리의 GitHub에서 별을 주세요!"
           }
         },
         "pl" : {
@@ -7291,12 +6628,6 @@
             "value" : "Battito"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heartbeat"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7362,12 +6693,6 @@
             "value" : "Aiuto"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "도움"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7431,12 +6756,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nascosto"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "숨겨진"
           }
         },
         "pl" : {
@@ -7516,12 +6835,6 @@
             "value" : "Identificativo"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "식별자"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7593,12 +6906,6 @@
             "value" : "Prefisso dell'identificativo"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "식별자 접두사"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7664,12 +6971,6 @@
             "value" : "Identificativi"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "식별자"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7717,19 +7018,7 @@
             "value" : "idevice"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "idevice"
-          }
-        },
         "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "idevice"
-          }
-        },
-        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "idevice"
@@ -7764,22 +7053,10 @@
             "value" : "This installation method is intended for advanced users only!\n\nIt requires a VPN and a pairing file from a PC.\n\nIts recommended you go back to the server installation method."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이 설치 방법은 숙련된 사용자만을 대상으로 합니다!\n\n이 방법을 사용하려면 VPN과 PC에서 가져온 페어링 파일이 필요합니다.\n\n서버 설치 방법으로 되돌아가는 것이 좋습니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ta metoda instalacji jest przeznaczona tylko dla zaawansowanych użytkowników!\n\nWymaga ona VPN i pliku parowania z komputera.\n\nZaleca się powrót do metody instalacji przez serwer."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu kurulum yöntemi yalnızca ileri düzey kullanıcılar içindir!\n\nBilgisayarınız üzerinden alınmış bir eşleştirme dosyası ve VPN gerektirir.\n\nSunucu kurulum yöntemine geri dönmeniz önerilir."
           }
         },
         "vi" : {
@@ -7821,12 +7098,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se riscontri qualche problema con l'app per favore segnalalo sulla repository di GitHub. Quando invii il problema, assicurati di inviare informazioni dettagliate."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "앱 내에서 문제가 발생할 경우 GitHub 저장소를 통해 이슈를 등록해 주세요. 이슈를 등록할 때는 자세한 정보를 반드시 포함해 주세요."
           }
         },
         "pl" : {
@@ -7907,12 +7178,6 @@
             "value" : "Importa"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "가져오기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7984,12 +7249,6 @@
             "value" : "Importa file certificato"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "인증서 가져오기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8054,12 +7313,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importa da File"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "파일에서 가져오기"
           }
         },
         "pl" : {
@@ -8128,12 +7381,6 @@
             "value" : "Importa da URL"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL에서 가져오기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8197,12 +7444,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importa file di abbinamento"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "페어링 파일 가져오기"
           }
         },
         "pl" : {
@@ -8270,12 +7511,6 @@
             "value" : "Importa file mobileprovision"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "프로비저닝 파일 가져오기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8339,12 +7574,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importato"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "가져옴"
           }
         },
         "pl" : {
@@ -8412,12 +7641,6 @@
             "value" : "Informazioni"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "정보"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8457,12 +7680,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Information"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "정보"
           }
         },
         "pl" : {
@@ -8506,22 +7723,10 @@
             "value" : "Inject into Extensions"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "확장 기능에 주입"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Załaduj do rozszerzeń"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uzantılara Dahil Et"
           }
         },
         "zh-Hans" : {
@@ -8565,12 +7770,6 @@
             "value" : "Cartella di iniezione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "주입 폴더"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8580,7 +7779,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ekleme Konumu"
+            "value" : "Enjeksiyon Klasörü"
           }
         },
         "vi" : {
@@ -8630,12 +7829,6 @@
             "value" : "Percorso di iniezione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "주입 경로"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8645,7 +7838,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ekleme Yolu"
+            "value" : "Enjeksiyon Yolu"
           }
         },
         "vi" : {
@@ -8713,12 +7906,6 @@
             "value" : "Installa"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "설치"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8772,22 +7959,10 @@
             "value" : "Install After Signing"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명 후 설치"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zainstaluj po podpisaniu"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İmzaladıktan Sonra Yükle"
           }
         },
         "vi" : {
@@ -8800,23 +7975,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "签名后安装"
-          }
-        }
-      }
-    },
-    "Install Current Version" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Install Current Version"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zainstaluj bieżącą wersję"
           }
         }
       }
@@ -8846,12 +8004,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Installazione"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "설치"
           }
         },
         "pl" : {
@@ -8919,12 +8071,6 @@
             "value" : "Tipo di installazione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "설치 유형"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8934,7 +8080,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kurulum Türü"
+            "value" : "Yükleme Türü"
           }
         },
         "vi" : {
@@ -8976,12 +8122,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Installazione"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "설치 중"
           }
         },
         "pl" : {
@@ -9047,12 +8187,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Schermo intero iPad"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "iPad 전체 화면"
           }
         },
         "pl" : {
@@ -9121,12 +8255,6 @@
             "value" : "Condivisione file su iTunes"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "iTunes 파일 공유"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9180,22 +8308,10 @@
             "value" : "Join Us on Discord"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Discord에 참여하세요!"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dołącz do nas na Discordzie"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Discord’da Bize Katılın"
           }
         },
         "vi" : {
@@ -9239,12 +8355,6 @@
             "value" : "Ottieni informazioni su come configurare una fonte..."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "저장소 설정 방법에 대해 자세히 알아보세요..."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9267,35 +8377,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "学习如何设置仓库"
-          }
-        }
-      }
-    },
-    "Less" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Less"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "적게"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mniej"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daha Az"
           }
         }
       }
@@ -9350,12 +8431,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Libreria"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "라이브러리"
           }
         },
         "pl" : {
@@ -9423,12 +8498,6 @@
             "value" : "Aspetto delle celle della libreria"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "라이브러리 셀 외관"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9476,12 +8545,6 @@
             "value" : "Light"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "라이트"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9504,17 +8567,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "明亮"
-          }
-        }
-      }
-    },
-    "Merge Entitlements" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Merge Entitlements"
           }
         }
       }
@@ -9557,12 +8609,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Requisiti minimi"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "최소 요구 사항"
           }
         },
         "pl" : {
@@ -9630,12 +8676,6 @@
             "value" : "Altro"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "기타"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9701,12 +8741,6 @@
             "value" : "Modifica"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "수정"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9746,12 +8780,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "More"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "더"
           }
         },
         "pl" : {
@@ -9831,12 +8859,6 @@
             "value" : "Nome"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이름"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9900,12 +8922,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nuovo"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "새"
           }
         },
         "pl" : {
@@ -9985,12 +9001,6 @@
             "value" : "Nuovo certificato"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "새로운 인증서"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10063,12 +9073,6 @@
             "value" : "Nickname (opzionale)"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "표시이름 (선택 사항)"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10120,12 +9124,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nessun'app"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "앱 없음"
           }
         },
         "pl" : {
@@ -10193,12 +9191,6 @@
             "value" : "Nessun certificato"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "인증서 없음"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10252,12 +9244,6 @@
             "value" : "Nessun certificato"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "인증서 없음"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10297,12 +9283,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Entitlements listed."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "나열된 권한 없음"
           }
         },
         "pl" : {
@@ -10364,12 +9344,6 @@
             "value" : "Nessun file scelto."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "파일이 선택되지 않았습니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10379,7 +9353,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hiçbir dosya seçilmedi."
+            "value" : "Hiçbir Dosya seçilmedi."
           }
         },
         "vi" : {
@@ -10421,12 +9395,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nessun Framework o PlugIn trovato."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "프레임워크나 플러그인을 찾을 수 없습니다."
           }
         },
         "pl" : {
@@ -10480,12 +9448,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nessun'icona trovata."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "아이콘을 찾을 수 없습니다."
           }
         },
         "pl" : {
@@ -10553,12 +9515,6 @@
             "value" : "File di abbinamento non trovato, per favore importalo."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "페어링 파일을 찾을 수 없습니다, 불러와 주세요."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10568,7 +9524,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eşleştirme dosyası bulunamadı. Lütfen içe aktarın."
+            "value" : "Eşleştirme dosyası bulunamadı, lütfen içe aktarın."
           }
         },
         "vi" : {
@@ -10598,12 +9554,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Privacy Permissions listed."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "개인정보 권한이 목록에 없습니다."
           }
         },
         "pl" : {
@@ -10659,12 +9609,6 @@
             "value" : "Nessuna fonte"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "저장소 없음"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10674,7 +9618,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Depo Yok"
+            "value" : "Depor Yok"
           }
         },
         "vi" : {
@@ -10706,22 +9650,10 @@
             "value" : "No sources to copy"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "복사할 소스 없음"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak źródeł do skopiowania"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kopyalanacak kaynak yok"
           }
         },
         "vi" : {
@@ -10763,12 +9695,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nessuno"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "없음"
           }
         },
         "pl" : {
@@ -10848,12 +9774,6 @@
             "value" : "OK"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "좋아요"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10925,12 +9845,6 @@
             "value" : "Usa solo l'indirizzo localhost"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "localhost 주소만 사용하세요"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10996,12 +9910,6 @@
             "value" : "Apri"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "열기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11053,12 +9961,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apri un [problema](https://github.com/khcrysalis/Feather/issues) su GitHub se vuoi che la tua fonte sia consigliata."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "소스가 소개되기를 원하신다면 GitHub에서 [이슈](https://github.com/khcrysalis/Feather/issues)를 등록해 주세요."
           }
         },
         "pl" : {
@@ -11126,12 +10028,6 @@
             "value" : "Apri archivio"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "보관 열기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11197,12 +10093,6 @@
             "value" : "Apri certificati"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "인증서 열기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11266,12 +10156,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apri documenti"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "문서 열기"
           }
         },
         "pl" : {
@@ -11351,12 +10235,6 @@
             "value" : "Apri in File"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "파일에서 열기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11389,6 +10267,53 @@
         }
       }
     },
+    "Other" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أخرى"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altro"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inne"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diğer"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khác"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他"
+          }
+        }
+      }
+    },
     "Packaging" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -11414,12 +10339,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impacchettamento"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "패키징"
           }
         },
         "pl" : {
@@ -11485,12 +10404,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Guida file di abbinamento"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "페어링 파일 가이드"
           }
         },
         "pl" : {
@@ -11570,12 +10483,6 @@
             "value" : "Password"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "비밀번호"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11621,12 +10528,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permissions"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "권한"
           }
         },
         "pl" : {
@@ -11692,12 +10593,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Piattaforma"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "플랫폼"
           }
         },
         "pl" : {
@@ -11778,12 +10673,6 @@
             "value" : "Per favore controlla la password e riprova."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "비밀번호를 확인하고 다시 시도해 주세요."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11855,12 +10744,6 @@
             "value" : "Per favore vai in impostazioni e importa un certificato prima"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "설정에서 유요한 인증서를 불러와 주세요."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11912,12 +10795,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Post-Firma"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명 후"
           }
         },
         "pl" : {
@@ -11985,12 +10862,6 @@
             "value" : "Protezione PPQ"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PPQ 보호"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12036,12 +10907,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "PPQCheck"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PPQ 검사"
           }
         },
         "pl" : {
@@ -12110,12 +10975,6 @@
             "value" : "Versioni precedenti"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이전 버전"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12163,19 +11022,7 @@
             "value" : "Pro Motion"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pro Motion"
-          }
-        },
         "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pro Motion"
-          }
-        },
-        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pro Motion"
@@ -12220,12 +11067,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Procedi"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "계속"
           }
         },
         "pl" : {
@@ -12300,12 +11141,6 @@
             "value" : "Proprietà"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "속성"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12369,12 +11204,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Protezione"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "보호"
           }
         },
         "pl" : {
@@ -12442,12 +11271,6 @@
             "value" : "Provisioning effettuato su tutti i dispositivi"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "모든 기기 프로비저닝"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12511,12 +11334,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dispositivi di cui è stato effettuato il provisioning"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "프로비저닝된 기기"
           }
         },
         "pl" : {
@@ -12584,12 +11401,6 @@
             "value" : "Ri-firma"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "재서명"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12641,12 +11452,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pronto"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "준비"
           }
         },
         "pl" : {
@@ -12714,12 +11519,6 @@
             "value" : "Rimozione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "제거"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12785,12 +11584,6 @@
             "value" : "Rimuovi avvisi fastidiose come questa dopo aver ottenuto l'accesso alla beta!"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "베타 이용 권한을 획득한 후, 이와 같은 성가신 알림을 제거하세요!"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12854,12 +11647,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rimuovi Provisioning"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "프로비저닝 제거"
           }
         },
         "pl" : {
@@ -12933,12 +11720,6 @@
             "value" : "Rimuovi questo avviso"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이 알림 제거"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13002,12 +11783,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rimuovi schema URL"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL 스키마 제거"
           }
         },
         "pl" : {
@@ -13081,12 +11856,6 @@
             "value" : "Rimuovi segnaposto dell'orologio"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Watch 자리표시자 제거"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13132,12 +11901,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rimuovere il file di provisioning escluderà il file .mobileprovision dall’essere incorporato nell’app durante la firma, aiutando così a evitare qualsiasi rilevamento."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "프로비저닝 파일을 제거하면 서명 시 ‘mobileprovision’ 파일이 애플리케이션 내에 포함되지 않게 되어, 탐지를 방지하는 데 도움이 됩니다."
           }
         },
         "pl" : {
@@ -13191,12 +11954,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sostituisci Substrate con ElleKit"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Substrate를 ElleKit으로 교체"
           }
         },
         "pl" : {
@@ -13262,12 +12019,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sostituzione"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "교체"
           }
         },
         "pl" : {
@@ -13341,12 +12092,6 @@
             "value" : "Fonti"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "저장소"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13398,12 +12143,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fonte già aggiunto."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이미 추가된 저장소입니다."
           }
         },
         "pl" : {
@@ -13483,12 +12222,6 @@
             "value" : "Ripristina"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "재설정"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13548,12 +12281,6 @@
             "value" : "Ripristina Tutto"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "모두 재설정"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13605,12 +12332,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ripristina Certificati"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "인증서 초기화"
           }
         },
         "pl" : {
@@ -13666,12 +12387,6 @@
             "value" : "Ripristina App Importate"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "가져온 앱 초기화"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13723,12 +12438,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reimposta Cache di rete"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "네트워크 캐시 초기화"
           }
         },
         "pl" : {
@@ -13784,12 +12493,6 @@
             "value" : "Ripristina Impostazioni"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "설정 초기화"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13841,12 +12544,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reimposta App firmate"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명된 앱 초기화"
           }
         },
         "pl" : {
@@ -13902,12 +12599,6 @@
             "value" : "Ripristina Fonti"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "소스 초기화"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13961,12 +12652,6 @@
             "value" : "Ripristina le fonti dell'applicazione, certificati, applicazioni e contenuti generali."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "애플리케이션 소스, 인증서, 앱 및 일반 콘텐츠를 초기화합니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14018,12 +12703,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ripristina Cache di lavoro"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "작업 캐시 초기화"
           }
         },
         "pl" : {
@@ -14091,12 +12770,6 @@
             "value" : "Riavvia battito"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heartbeat 재시작"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14106,7 +12779,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Heartbeat’i Yeniden Başlat"
+            "value" : "Heartbeat’ı Sıfırla"
           }
         },
         "vi" : {
@@ -14162,12 +12835,6 @@
             "value" : "Riavvio richiesto"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "재시작 필요"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14207,12 +12874,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Revoked"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "리보크"
           }
         },
         "pl" : {
@@ -14286,12 +12947,6 @@
             "value" : "Salva"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "저장"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14337,12 +12992,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Screenshots"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "스크린샷"
           }
         },
         "pl" : {
@@ -14411,12 +13060,6 @@
             "value" : "Mostra tutte le app dalle tue fonti"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "소스별 모든 앱 보기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14480,12 +13123,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sembra che tu abbia messo le mani sul tuo file di abbinamento!"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "페어링 파일을 손에 넣으신 것 같네요!"
           }
         },
         "pl" : {
@@ -14554,12 +13191,6 @@
             "value" : "Seleziona icona alternativa"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "대체 아이콘 선택"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14624,12 +13255,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seleziona file dei diritti"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "권한 파일 선택"
           }
         },
         "pl" : {
@@ -14697,12 +13322,6 @@
             "value" : "Semi Locale"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "부분 로컬"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14754,12 +13373,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Invio del manifest"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manifest 보내는 중"
           }
         },
         "pl" : {
@@ -14815,12 +13428,6 @@
             "value" : "Invio del payload"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Payload 보내는 중"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14874,12 +13481,6 @@
             "value" : "Server"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서버"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14931,12 +13532,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Server (Consigliato):Utilizza un server ospitato localmente e itms-services:// per installare le applicazioni.iDevice (Avanzato):Utilizza una VPN e un file di abbinamento. Scrive tramite AFC e richiama manualmente installd, monitorando l’avanzamento dell’installazione tramite una callback.Vantaggi:È molto affidabile, non richiede certificati SSL né un server ospitato esternamente. Funziona in modo simile a un computer."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서버 (추천):\n로컬에 호스팅된 서버와 itms-services://를 사용하여 애플리케이션을 설치합니다.\n\nIDevice (고급):\nVPN과 페어링 파일을 사용합니다. AFC에 데이터를 기록하고 수동으로 installd를 호출하며, 콜백을 통해 설치 진행 상황을 모니터링합니다.\n장점: 매우 안정적이며, SSL 인증서나 외부 호스팅 서버가 필요하지 않습니다. 오히려 컴퓨터와 비슷한 방식으로 작동합니다."
           }
         },
         "pl" : {
@@ -15004,12 +13599,6 @@
             "value" : "Server & SSL"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서버 및 SSL"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15061,12 +13650,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tipo server"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서버 유형"
           }
         },
         "pl" : {
@@ -15147,12 +13730,6 @@
             "value" : "Impostazioni"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "설정"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15217,12 +13794,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mostra foglio di condivisione quando Esporti"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "내보낼 때 시트 표시"
           }
         },
         "pl" : {
@@ -15290,12 +13861,6 @@
             "value" : "Mostra il tuo supporto"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "응원을 보여주세요"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15359,12 +13924,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mostra il tuo supporto donando! Se non puoi donare, può funzionare anche condividerlo con il mondo!"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "후원을 통해 여러분의 응원을 보여주세요! 후원을 하실 수 없다면, 이 앱을 널리 알리는 것도 큰 도움이 됩니다!"
           }
         },
         "pl" : {
@@ -15432,12 +13991,6 @@
             "value" : "Firma"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15501,12 +14054,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Firmato"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명됨"
           }
         },
         "pl" : {
@@ -15580,12 +14127,6 @@
             "value" : "Firmando"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명중"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15651,12 +14192,6 @@
             "value" : "Opzioni della firma"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명 옵션"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15716,12 +14251,6 @@
             "value" : "Tipo di firma"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명 유형"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15763,12 +14292,6 @@
             "value" : "Size"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "크기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15808,12 +14331,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Source"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "소스"
           }
         },
         "pl" : {
@@ -15879,12 +14396,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL Fonte"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "소스 URL"
           }
         },
         "pl" : {
@@ -15965,12 +14476,6 @@
             "value" : "Fonti"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "소스"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16012,22 +14517,10 @@
             "value" : "Sources copied to clipboard"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "소스를 클립보드에 복사함"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Źródła skopiowane do schowka"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kaynaklar panoya kopyalandı"
           }
         },
         "vi" : {
@@ -16069,12 +14562,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Velocità"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "속도"
           }
         },
         "pl" : {
@@ -16154,12 +14641,6 @@
             "value" : "Sostenitori"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "스폰서"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16231,12 +14712,6 @@
             "value" : "Certificati SSL"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SSL 인증서"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16300,12 +14775,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Standard"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "표준"
           }
         },
         "pl" : {
@@ -16379,12 +14848,6 @@
             "value" : "Inizia a firmare"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명 시작"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16450,12 +14913,6 @@
             "value" : "Aspetto della cella di memorizzazione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "스토어 셀 외관"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16519,12 +14976,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stringa"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "문자열"
           }
         },
         "pl" : {
@@ -16604,12 +15055,6 @@
             "value" : "Invia feedback"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "피드백 제출"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16681,12 +15126,6 @@
             "value" : "Suporta l'importazione da KravaSign/MapleSign e ESign."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "KravaSign/MapleSign 및 ESign에서 가져오기를 지원합니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16728,22 +15167,10 @@
             "value" : "Switch Back"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "뒤로 가기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wróć"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geri Dön"
           }
         },
         "vi" : {
@@ -16797,12 +15224,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Identificatori Team"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "팀 식별자"
           }
         },
         "pl" : {
@@ -16870,12 +15291,6 @@
             "value" : "Nome Team"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "팀 이름"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16941,12 +15356,6 @@
             "value" : "Il battito è attivo in background; verrà riavviato quando l'app viene riaperta o forzata. Se lo stato qui sotto pulsa, significa che è funzionante."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heartbeat는 백그라운드에서 실행되며, 앱을 다시 열거나 요청이 있을 때 다시 시작됩니다. 아래 상태가 깜빡이고 있다면 정상적으로 작동하고 있다는 뜻입니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17000,12 +15409,6 @@
             "value" : "L'unica fonte supportata sono fonti di AltStore."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AltStore 저장소 형식만 지원됩니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17057,12 +15460,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tema"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "테마"
           }
         },
         "pl" : {
@@ -17130,12 +15527,6 @@
             "value" : "Questi cambiamenti richiedono un riavvio dell'app"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이 변경 사항을 적용하려면 앱을 다시 시작해야 합니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17188,12 +15579,6 @@
             "value" : "Questa operazione non può essere annullata. Vuoi procedere?"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17233,12 +15618,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This allows you to set rules for automatically replacing the Bundle ID/Display Name when signing an app."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이를 통해 앱을 서명할 때 번들 ID/표시 이름을 자동으로 대체할 규칙을 설정할 수 있습니다."
           }
         },
         "pl" : {
@@ -17294,12 +15673,6 @@
             "value" : "Questo abilita il liquid glass per l'app, questo richiede un riavvio dell'app per dare effetto."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이를 통해 해당 앱에서 Liquid glass를 사용할 수 있게 되며, 변경 사항을 적용하려면 앱을 다시 시작해야 합니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17353,12 +15726,6 @@
             "value" : "Questa opzione forza la conversione delle app per provare a usare il nuovo redesign liquid glass introdotto con iOS 26, però non funziona su tutte le app per via dei framework diversi."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이 옵션은 앱을 강제로 변환하여 iOS 26에서 도입된 새로운 Liquid Glass 디자인 방식을 사용하도록 시도합니다. 프레임워크가 서로 다르기 때문에 모든 앱에서 제대로 작동하지 않을 수 있습니다."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17381,17 +15748,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此选项强制为应用启用iOS 26的Liquid Glass。由于使用的框架不同，此选项不一定有效果。"
-          }
-        }
-      }
-    },
-    "This option merges entitlements with the embedded entitlements from the app you're signing." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This option merges entitlements with the embedded entitlements from the app you're signing."
           }
         }
       }
@@ -17421,12 +15777,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Questo elimina l'applicazione importata dopo la firma, per salvare spazio usato inutilmente."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명 절차가 완료되면 불필요한 저장 공간을 절약하기 위해 가져온 애플리케이션을 삭제합니다."
           }
         },
         "pl" : {
@@ -17470,22 +15820,10 @@
             "value" : "Tinted Icons"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "틴트 아이콘"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Barwione Ikony"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Renklendirilmiş Simgeler"
           }
         },
         "vi" : {
@@ -17539,12 +15877,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abilitando questa opzione mosta una schermata di condivisione dopo aver esportato i file."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "시트 표시를 토글하면 파일에 내보낸 후 공유 시트가 표시됩니다."
           }
         },
         "pl" : {
@@ -17612,12 +15944,6 @@
             "value" : "Tunnel & Abbinamento"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "터널 및 페어링"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17678,22 +16004,10 @@
             "value" : "Modifiche"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "트윅"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tweaks"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yamalar"
           }
         },
         "vi" : {
@@ -17761,12 +16075,6 @@
             "value" : "Sconosciuto"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "알수없음"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17795,40 +16103,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未知"
-          }
-        }
-      }
-    },
-    "Update" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Update"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktualizuj"
-          }
-        }
-      }
-    },
-    "Update Available" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Update Available"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dostępna aktualizacja"
           }
         }
       }
@@ -17872,12 +16146,6 @@
             "value" : "Aggiorna i certificati SSL"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SSL 인증서 업데이트"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17917,12 +16185,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Updated"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "업데이트됨"
           }
         },
         "pl" : {
@@ -17972,19 +16234,7 @@
             "value" : "URL"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL"
-          }
-        },
         "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL"
-          }
-        },
-        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
@@ -18029,12 +16279,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Valore"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "값"
           }
         },
         "pl" : {
@@ -18114,12 +16358,6 @@
             "value" : "Versione"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "버전"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18162,12 +16400,6 @@
             "value" : "Version %@"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "버전 %@"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18207,12 +16439,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version History"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "버전 기록"
           }
         },
         "pl" : {
@@ -18281,12 +16507,6 @@
             "value" : "Mostra diritti"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "권한 보기"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18351,12 +16571,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Visita il Patreon"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Patreon 방문"
           }
         },
         "pl" : {
@@ -18425,12 +16639,6 @@
             "value" : "Visita il sito web"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "웹사이트 방문"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18472,12 +16680,6 @@
             "value" : "What's New"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "변경 사항"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18487,7 +16689,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yenilikler"
+            "value" : "Neler Yeni"
           }
         },
         "vi" : {
@@ -18535,12 +16737,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Non puoi aggiornare ‘%@‘ con se stesso, usa un altro tool per fare l’aggiornamento."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`%@`을(를) 자체적으로 업데이트할 수 없습니다. 다른 도구를 사용해 업데이트해 주세요.\n"
           }
         },
         "pl" : {
@@ -18596,12 +16792,6 @@
             "value" : "Il tuo file di abbinamento non è valido e non è compatibile con il tuo dispositivo, per favore importa un file di abbinamento valido."
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "페어링 파일이 올바르지 않거나 기기와 호환되지 않습니다. 유효한 페어링 파일을 가져와 주세요.\n"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18611,7 +16801,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eşleştirme dosyanız geçersiz ve cihazınızla uyumlu değil. Lütfen geçerli bir eşleştirme dosyası içe aktarın."
+            "value" : "Eşleştirme dosyanız geçersiz ve cihazınızla uyumlu değil, lütfen geçerli bir eşleştirme dosyası içe aktarın."
           }
         },
         "vi" : {

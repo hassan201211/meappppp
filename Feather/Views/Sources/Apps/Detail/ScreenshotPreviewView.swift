@@ -23,35 +23,33 @@ struct ScreenshotPreviewView: View {
 	}
     
 	var body: some View {
-		NavigationStack {
+        // تم استبدال NavigationStack بـ NavigationView لدعم iOS 15
+		NavigationView {
 			_imageScrollView()
 				.toolbar {
-					ToolbarItem(placement: .topBarLeading) {
-						if #available(iOS 26.0, *) {
-							Button(role: .close) { dismiss() }
+					ToolbarItem(placement: .navigationBarLeading) {
+						if #available(iOS 16.0, *) {
+							Button(role: .cancel) { dismiss() } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundStyle(.secondary)
+                            }
 						} else {
-							Button(.localized("Close"), role: .cancel) { dismiss() }
+							Button(.localized("Close")) { dismiss() }
 						}
 					}
-					ToolbarItem(placement: .topBarTrailing) {
-						if #available(iOS 26.0, *) {
-							Text(verbatim: "\(currentIndex + 1) / \(screenshotURLs.count)")
-								.font(.subheadline)
-								.padding(.horizontal, 12)
-								.padding(.vertical, 6)
-						} else {
-							Text(verbatim: "\(currentIndex + 1) / \(screenshotURLs.count)")
-								.font(.subheadline)
-								.padding(.horizontal, 12)
-								.padding(.vertical, 6)
-								.background(
-									Capsule()
-										.fill(.ultraThinMaterial)
-								)
-						}
+					ToolbarItem(placement: .navigationBarTrailing) {
+						Text(verbatim: "\(currentIndex + 1) / \(screenshotURLs.count)")
+							.font(.subheadline)
+							.padding(.horizontal, 12)
+							.padding(.vertical, 6)
+							.background(
+								Capsule()
+									.fill(.ultraThinMaterial)
+							)
 					}
 				}
 		}
+        .navigationViewStyle(.stack) // ضروري لضمان ظهور الواجهة بشكل صحيح
 	}
 }
 

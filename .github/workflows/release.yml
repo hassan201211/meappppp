@@ -1,45 +1,153 @@
-name: Release
+name: Ksign Beta Build
 
 on:
   push:
-    tags:
-      - v*
+    branches: [ "main" ]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
-    runs-on: macos-latest
+    name: Build and Release Ksign Beta
+    runs-on: macos-14
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Checkout Code
+        uses: actions/checkout@v4
         with:
-          submodules: 'true'
+          fetch-depth: 0 
+          submodules: recursive
 
-      - name: Prepare dependencies (Xcode)
-        run: |
-          sudo xcode-select -s /Applications/Xcode_26.3.0.app
-
-      - name: Build
-        run: | 
-          agvtool new-version -all $(git rev-parse HEAD)
-          make
-
-      - name: Get Version
-        id: get_version
-        run: |
-          VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" _build/Payload/*.app/Info.plist)
-          echo "VERSION=${VERSION}" >> $GITHUB_ENV
-
-      - name: Create Release
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v3.0.2
+      - name: Setup Xcode Cache
+        uses: actions/cache@v4
         with:
-          name: Feather v${{ env.VERSION }}
-          tag_name: v${{ env.VERSION }}
-          files: |
-            packages/*
-          generate_release_notes: true
-          fail_on_unmatched_files: true
-          draft: true
+          path: ~/Library/Developer/Xcode/DerivedData/
+          key: ${{ runner.os }}-xcode-deriveddata-${{ hashFiles('**/project.pbxproj', '**/*.Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-xcode-deriveddata-
+
+      - name: Auto-Detect and Use Xcode 16
+        run: |
+          XCODE_PATH=$(ls -d /Applications/Xcode_16*.app 2>/dev/null | head -n 1)
+          if [ -z "$XCODE_PATH" ]; then
+            echo "❌ لم يتم العثور على Xcode 16."
+            ls -d /Applications/Xcode*.app
+            exit 1
+          fi
+          echo "✅ تم العثور على الإصدار وتفعيله: $XCODE_PATH"
+          sudo xcode-select -s "$XCODE_PATH/Contents/Developer"
+
+      - name: Fast Modify & Patch (Ksign Info & Expert Fixes)
+        run: |
+          # 1. تعديل الاسم والحزمة إلى Ksign
+          INFO_PLIST_PATH="Feather/Resources/Info.plist"
+          if [ -f "$INFO_PLIST_PATH" ]; then
+            plutil -replace CFBundleDisplayName -string "Ksign" "$INFO_PLIST_PATH" || true
+            plutil -replace CFBundleName -string "Ksign" "$INFO_PLIST_PATH" || true
+            plutil -replace CFBundleIdentifier -string "app.ksign.store" "$INFO_PLIST_PATH" || true
+            plutil -replace MinimumOSVersion -string "15.0" "$INFO_PLIST_PATH" || true
+          fi
+
+          # 2. إجبار البناء على iOS 15 والتزامن الآمن
+          find . -name "project.pbxproj" -exec sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9]*\.[0-9]*;/IPHONEOS_DEPLOYMENT_TARGET = 15.0; SWIFT_VERSION = 5.0; SWIFT_STRICT_CONCURRENCY = minimal;/g' {} +
+
+          if [ -f "Makefile" ]; then
+            sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET=15.0;/IPHONEOS_DEPLOYMENT_TARGET=15.0 SWIFT_VERSION=5.0 SWIFT_STRICT_CONCURRENCY=minimal;/g' Makefile
+          fi
+
+          # 3. ترقيع الواجهات وأخطاء المتغيرات (يعمل بشكل ممتاز)
+          find . -name "*.swift" -type f -exec perl -pi -e '
+            s/\.rect\(cornerRadius:\s*([^,]+),\s*style:\s*\.([^)]+)\)/RoundedRectangle(cornerRadius: $1, style: .$2)/g;
+            s/\.glassEffect\([^,]+,\s*in:/ \.background(Color.secondary.opacity(0.2), in:/g;             s/\.glassEffect\(\)/\.background(Color.secondary.opacity(0.2))/g;
+            s/app\.developerName/app.developer/g;
+            s/Text\(app\.name\)/Text\(app.name \?\? "تطبيق غير معروف"\)/g;
+          ' {} +
+
+          # 4. 💡 الحل الذهبي لمشكلة NimbleKit (Binding+optional.swift) بناءً على نصيحة المبرمج
+          # استبدال import SwiftUI بـ @preconcurrency import SwiftUI لحل مشكلة الـ @Sendable
+          find . -name "Binding+optional.swift" -exec perl -pi -e 's/import SwiftUI/\@preconcurrency import SwiftUI/g' {} +
+
+          # 5. 💡 الحل الجذري لمشكلة BackgroundTaskManager
+          BG_FILE="Feather/Utilities/BackgroundTaskManager.swift"
+          if [ -f "$BG_FILE" ]; then
+            # استبدال فئات iOS 18 غير المدعومة بالفئات القياسية المدعومة
+            perl -pi -e 's/BGContinuedProcessingTaskRequest/BGProcessingTaskRequest/g' "$BG_FILE"
+            perl -pi -e 's/BGContinuedProcessingTask/BGProcessingTask/g' "$BG_FILE"
+            
+            # إصلاح الدالة البانية (init) بإزالة المتغيرات الزائدة (title, subtitle) وترك identifier فقط
+            perl -pi -e 's/,\s*title:[^)]+\)/)/g' "$BG_FILE"
+            
+            # تهميش (Comment out) الأسطر التي تستخدم خصائص غير موجودة في BGProcessingTask دون حذفها لتجنب الأخطاء
+            perl -pi -e 's/^(.*request\.strategy.*)$/\/\/ $1/g' "$BG_FILE"
+            perl -pi -e 's/^(.*task\.progress.*)$/\/\/ $1/g' "$BG_FILE"
+            perl -pi -e 's/^(.*task\.updateTitle.*)$/\/\/ $1/g' "$BG_FILE"
+          fi
+
+      - name: Build Ksign IPA
+        run: |
+          export IPHONEOS_DEPLOYMENT_TARGET=15.0
+          export SWIFT_VERSION=5.0
+          export SWIFT_STRICT_CONCURRENCY=minimal
+          
+          make iphoneos NAME=Ksign SWIFT_VERSION=5.0 SWIFT_STRICT_CONCURRENCY=minimal
+
+      - name: Update Beta Release
         env:
-          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          LATEST_OFFICIAL_TAG=$(git describe --tags --match "v*" --abbrev=0 2>/dev/null || echo "")
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          
+          echo "## Commit: \`$COMMIT_MSG\` (${{ github.sha }})" > release_notes.md
+          
+          if [ -n "$LATEST_OFFICIAL_TAG" ]; then
+            echo "### New in this build (Compared to $LATEST_OFFICIAL_TAG):" >> release_notes.md
+            CHANGES=$(git log --pretty=format:"* %s (%h)" ${LATEST_OFFICIAL_TAG}..HEAD)
+            if [ -z "$CHANGES" ]; then
+              echo "* No code changes since $LATEST_OFFICIAL_TAG" >> release_notes.md
+            else
+              echo "$CHANGES" >> release_notes.md
+            fi
+          else
+            echo "### Initial Beta Build" >> release_notes.md
+          fi
+          
+          echo "### Commit SHA: ${{ github.sha }}" >> release_notes.md
+
+          gh release delete beta --cleanup-tag -y || true
+          
+          gh release create beta "packages/Ksign.ipa" \
+            --title "Latest Beta Build" \
+            --notes-file release_notes.md \
+            --prerelease \
+            --target ${{ github.sha }}
+
+      - name: Notify Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "⚠️ لم يتم إعداد DISCORD_WEBHOOK في الـ Secrets. جاري تخطي الإشعار."
+            exit 0
+          fi
+          
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          REPO="${{ github.repository }}"
+          TAG="beta"
+          FILENAME="Ksign.ipa"
+          
+          DOWNLOAD_URL="https://github.com/$REPO/releases/download/$TAG/$FILENAME"
+          RELEASE_URL="https://github.com/$REPO/releases/tag/$TAG"
+          
+          jq -n \
+            --arg commit_msg "$COMMIT_MSG" \
+            --arg download_url "$DOWNLOAD_URL" \
+            --arg release_url "$RELEASE_URL" \
+            '{content: "🚀 **تم إصدار نسخة بيتا جديدة (Ksign)!**\n\n**التغييرات:** `\($commit_msg)`\n\n📥 [**تحميل التطبيق (IPA)**](\($download_url))\n🔗 [عرض الإصدار في GitHub](\($release_url))"}' > discord_payload.json
+
+          curl -s \
+            -H "Content-Type: application/json" \
+            -d @discord_payload.json \
+            "$DISCORD_WEBHOOK"

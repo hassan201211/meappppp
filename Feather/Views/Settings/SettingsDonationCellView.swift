@@ -80,13 +80,13 @@
 		@ViewBuilder
 		private func _sheetButton(_ title: String) -> some View {
 			Text(title)
+                .bold() // تم نقل هذا السطر للأعلى ليدعم iOS 15 بشكل سليم
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
 				.background(Color.accentColor)
 				.foregroundColor(.white)
 				.clipShape(
 					RoundedRectangle(cornerRadius: 12, style: .continuous)
 				)
-				.bold()
 		}
 	}
 

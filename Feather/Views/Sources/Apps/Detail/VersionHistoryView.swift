@@ -12,8 +12,6 @@ import AltSourceKit
 struct VersionHistoryView: View {
 	@Environment(\.dismiss) var dismiss
 	
-	let sourceURL: URL?
-	let source: ASRepository
 	let app: ASRepository.App
 	let versions: [ASRepository.App.Version]
     
@@ -33,13 +31,7 @@ struct VersionHistoryView: View {
 							Button {
 								_ = DownloadManager.shared.startDownload(
 									from: downloadURL,
-									id: app.currentUniqueId,
-									sourceProvenance: SourceAppProvenance(
-										sourceURL: sourceURL,
-										repository: source,
-										app: app,
-										version: version
-									)
+									id: app.currentUniqueId
 								)
 								dismiss()
 							} label: {
@@ -61,3 +53,4 @@ struct VersionHistoryView: View {
 		}
 	}
 }
+

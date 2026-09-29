@@ -42,16 +42,24 @@ public struct NBPillView: View {
 		.frame(maxWidth: .infinity)
 		.padding(.vertical, 10)
 		.background(
-			UnevenRoundedRectangle(
-				cornerRadii: .init(
-					topLeading: radii.topLeading,
-					bottomLeading: radii.bottomLeading,
-					bottomTrailing: radii.bottomTrailing,
-					topTrailing: radii.topTrailing
-				),
-				style: .continuous
-			)
-			.fill(color.opacity(0.15))
+			Group {
+				if #available(iOS 16.0, *) {
+					UnevenRoundedRectangle(
+						cornerRadii: .init(
+							topLeading: radii.topLeading,
+							bottomLeading: radii.bottomLeading,
+							bottomTrailing: radii.bottomTrailing,
+							topTrailing: radii.topTrailing
+						),
+						style: .continuous
+					)
+					.fill(color.opacity(0.15))
+				} else {
+					// بديل لـ iOS 15 حيث أن UnevenRoundedRectangle غير مدعوم
+					RoundedRectangle(cornerRadius: 8, style: .continuous)
+						.fill(color.opacity(0.15))
+				}
+			}
 		)
 	}
 	
@@ -68,7 +76,7 @@ public struct NBPillView: View {
 		}
 		
 		public var cornerRadii: (topLeading: CGFloat, bottomLeading: CGFloat, bottomTrailing: CGFloat, topTrailing: CGFloat) {
-			if #available(iOS 26.0, *) {
+			if #available(iOS 16.0, *) { // تم تصحيح الخطأ المطبعي من 26.0 إلى 16.0
 				return (16, 16, 16, 16)
 			}
 			else {

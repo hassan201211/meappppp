@@ -1,8 +1,9 @@
 //
 //  AboutView.swift
-//  Feather
+//  SY STORE
 //
 //  Created by samara on 30.04.2025.
+//  Modified for SY STORE.
 //
 
 import SwiftUI
@@ -12,37 +13,39 @@ import NimbleJSON
 // MARK: - Extension: Model
 extension AboutView {
 	struct CreditsModel: Codable, Hashable {
-		let name: String?
-		let desc: String?
-		let github: String
+		let name: String
+		let desc: String
+		let link: String
+		let imageUrl: String
 	}
 }
 
 // MARK: - View
 struct AboutView: View {
 	@State private var _credits: [CreditsModel] = [
-		.init(name: "C", desc: "Developer", github: "claration"),
-		.init(name: "Asami", desc: "Developer", github: "Nyasami"),
-		.init(name: "Lakhan Lothiyi", desc: "AltStore Repositories", github: "llsc12"),
+		.init(
+			name: "IPA BLACK",
+			desc: "مطور ios",
+			link: "https://t.me/ipa_black",
+			imageUrl: "https://up6.cc/2026/05/177867480259152.jpeg"
+		),
+		.init(
+			name: "حور",
+			desc: "مساعد مطور ومصمم",
+			link: "https://t.me/lh0ss",
+			imageUrl: "https://up6.cc/2026/05/177867480261513.jpeg"
+		)
 	]
-	
-	let pngURL = URL(string: "https://sponsors.claration.dev/sponsors.png")!
 	
 	// MARK: Body
 	var body: some View {
-		NBList(.localized("About")) {
+		NBList("حول التطبيق") {
 			Section {
 				VStack {
-					FRAppIconView(size: 72)
-					
-					Text(Bundle.main.exec)
-						.font(.largeTitle)
-						.bold()
-						.foregroundStyle(Color.accentColor)
-					
+					// تثبيت رقم الإصدار
 					HStack(spacing: 4) {
-						Text(.localized("Version"))
-						Text(Bundle.main.version)
+						Text("الإصدار")
+						Text("1.0")
 					}
 					.font(.footnote)
 					.foregroundStyle(.secondary)
@@ -51,41 +54,17 @@ struct AboutView: View {
 			.frame(maxWidth: .infinity)
 			.listRowBackground(EmptyView())
 			
-			NBSection(.localized("Credits")) {
-				ForEach(_credits, id: \.github) { credit in
-					_credit(name: credit.name, desc: credit.desc, github: credit.github)
+			// قسم المطورين
+			NBSection("المطورين") {
+				ForEach(_credits, id: \.link) { credit in
+					_credit(
+						name: credit.name,
+						desc: credit.desc,
+						link: credit.link,
+						imageUrl: credit.imageUrl
+					)
 				}
 				.transition(.slide)
-			}
-			
-			NBSection(.localized("Sponsors")) {
-				Text(.localized("💜 This couldn't of been done without my sponsors!"))
-					.foregroundStyle(.secondary)
-					.padding(.vertical, 2)
-				AsyncImage(url: pngURL) { phase in
-					switch phase {
-					case .empty:
-						ProgressView()
-							.frame(maxWidth: .infinity)
-							.frame(height: 120)
-					case .success(let image):
-						image
-							.resizable()
-							.scaledToFit()
-							.frame(maxWidth: .infinity)
-							.listRowInsets(EdgeInsets())
-					case .failure:
-						Image(systemName: "photo")
-							.resizable()
-							.scaledToFit()
-							.frame(maxWidth: .infinity)
-							.foregroundColor(.gray)
-							.frame(height: 120)
-						
-					@unknown default:
-						EmptyView()
-					}
-				}
 			}
 		}
 	}
@@ -95,23 +74,26 @@ struct AboutView: View {
 extension AboutView {
 	@ViewBuilder
 	private func _credit(
-		name: String?,
-		desc: String?,
-		github: String
+		name: String,
+		desc: String,
+		link: String,
+		imageUrl: String
 	) -> some View {
 		Button {
-			UIApplication.open("https://github.com/\(github)")
+			UIApplication.open(link)
 		} label: {
 			HStack {
 				FRIconCellView(
-					title: name ?? github,
-					subtitle: desc ?? "",
-					iconUrl: URL(string: "https://github.com/\(github).png")!,
+					title: name,
+					subtitle: desc,
+					iconUrl: URL(string: imageUrl)!,
 					size: 45,
 					isCircle: true
 				)
 				
-				Image(systemName: "arrow.up.right")
+				Spacer() // لدفع السهم إلى الطرف الآخر بشكل مرتب
+				
+				Image(systemName: "arrow.up.left") // استخدام سهم يناسب اللغة العربية (من اليمين لليسار)
 					.foregroundColor(.secondary.opacity(0.65))
 			}
 		}

@@ -65,7 +65,7 @@ public struct NBSection<Content, Footer>: View
 						Text(_headerTextSecondary)
 							.font(.caption)
 							.foregroundStyle(.secondary)
-							.contentTransition(.numericText())
+							.safeNumericTextTransition()
 							.padding(.horizontal, 8)
 							.padding(.vertical, 4.4)
 							.background(Color(uiColor: .quaternarySystemFill))
@@ -75,7 +75,7 @@ public struct NBSection<Content, Footer>: View
 						Text(_headerTextSecondary)
 							.font(.caption)
 							.foregroundStyle(.secondary)
-							.contentTransition(.numericText())
+							.safeNumericTextTransition()
 							.padding(.horizontal, 8)
 							.padding(.vertical, 4.4)
 							.background(Color(uiColor: .quaternarySystemFill))
@@ -92,5 +92,17 @@ public struct NBSection<Content, Footer>: View
 			_content
 		}
 		.headerProminence(.increased)
+	}
+}
+
+// إضافة خاصة لضمان عمل الواجهة على iOS 15 بدون أخطاء
+private extension View {
+	@ViewBuilder
+	func safeNumericTextTransition() -> some View {
+		if #available(iOS 16.0, *) {
+			self.contentTransition(.numericText())
+		} else {
+			self
+		}
 	}
 }

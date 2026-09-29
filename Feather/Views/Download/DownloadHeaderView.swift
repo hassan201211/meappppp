@@ -58,11 +58,11 @@ struct DownloadItemView: View {
 			
 			HStack {
 				Text(verbatim: "\(Int(overallProgress * 100))%")
-					.contentTransition(.numericText())
+					.compatibleNumericTextTransition() // تم التعديل لدعم iOS 15
 				Spacer()
 				if totalBytes > 0 {
 					Text(verbatim: "\($bytesDownloaded.wrappedValue.formattedByteCount) / \(totalBytes.formattedByteCount)")
-						.contentTransition(.numericText())
+						.compatibleNumericTextTransition() // تم التعديل لدعم iOS 15
 				}
 			}
 			.font(.caption)
@@ -80,4 +80,17 @@ struct DownloadItemView: View {
 			? unpackageProgress
 			: (0.3 * unpackageProgress) + (0.7 * progress)
 	}
+}
+
+// MARK: - Compatibility Extension
+private extension View {
+    /// مُعدل مخصص يحافظ على التأثير الحركي للأرقام في iOS 16+ ويتجاهله في iOS 15 لضمان التوافق
+    @ViewBuilder
+    func compatibleNumericTextTransition() -> some View {
+        if #available(iOS 16.0, *) {
+            self.contentTransition(.numericText())
+        } else {
+            self
+        }
+    }
 }

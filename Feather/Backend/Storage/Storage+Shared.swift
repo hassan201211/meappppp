@@ -26,7 +26,6 @@ extension Storage {
 			if let url = getUuidDirectory(for: app) {
 				try? FileManager.default.removeItem(at: url)
 			}
-			deleteSourceMetadata(for: app.uuid)
 			if let object = app as? NSManagedObject {
 				context.delete(object)
 			}
@@ -59,7 +58,6 @@ protocol AppInfoPresentable {
 	var date: Date? { get }
 	var icon: String? { get }
 	var uuid: String? { get }
-	var source: URL? { get }
 	var isSigned: Bool { get }
 	
 }
