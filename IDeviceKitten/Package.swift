@@ -1,76 +1,31 @@
-// swift-tools-version: 5.8
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
+// swift-tools-version: 5.9
 import PackageDescription
 
 let package = Package(
-    name: "Zsign",
+	name: "IDeviceKit",
 	platforms: [
-		.iOS(.v12),
-		.macOS(.v10_15),
-		.tvOS(.v12),
-		.watchOS(.v8),
-		.custom("xros", versionString: "1.3")
+		.iOS(.v15),
+		.macOS(.v12),
 	],
 	products: [
 		.library(
-			name: "zsign",
-			targets: ["Zsign"]
+			name: "IDevice",
+			targets: ["IDevice"]
 		),
 		.library(
-			name: "ZsignSwift",
-			targets: ["ZsignSwift"]
+			name: "IDeviceSwift",
+			targets: ["IDeviceSwift"]
 		),
-	],
-	dependencies: [
-		.package(url: "https://github.com/krzyzanowskim/OpenSSL", from: "3.3.3001")
 	],
 	targets: [
-		.target(
-			name: "Zsign",
-			dependencies: [
-				.product(name: "OpenSSL", package: "OpenSSL")
-			],
-			path: "src",
-			exclude: [
-				"common/archive.cpp",
-				"zsign.cpp"
-			],
-			sources: [
-				"archo.cpp",
-				"bundle.cpp",
-				"macho.cpp",
-				"openssl.cpp",
-				"openssl_tools.mm",
-				"signing.cpp",
-				"zsign.mm",
-				"common/base64.cpp",
-				"common/fs.cpp",
-				"common/json.cpp",
-				"common/log.cpp",
-				"common/sha.cpp",
-				"common/timer.cpp",
-				"common/util.cpp"
-			],
-			publicHeadersPath: "include",
-			cxxSettings: [
-				.headerSearchPath("."),
-				.headerSearchPath("common"),
-				.unsafeFlags(["-std=c++17"])
-			],
-			linkerSettings: [
-				.linkedFramework("OpenSSL"),
-			]
+		.binaryTarget(
+			name: "IDevice",
+			url: "https://github.com/jkcoxson/idevice/releases/download/v0.1.57/IDevice.xcframework.zip",
+			checksum: "40cd5c769b60d1879a96c9caa27666037f9d5321844addec40ae99727b142d10"
 		),
 		.target(
-			name: "ZsignSwift",
-			dependencies: [
-				"Zsign"
-			],
-			path: "Sources",
-			sources: [
-				"zsign.swift"
-			]
-		)
+			name: "IDeviceSwift",
+			dependencies: ["IDevice"]
+		),
 	]
 )

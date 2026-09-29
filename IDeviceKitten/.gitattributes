@@ -1,4 +1,4 @@
-*.md linguist-documentation
-build/windows/vs2022/include/zlib/* linguist-vendored
-build/windows/vs2022/include/minizip/* linguist-vendored
-build/windows/vs2022/include/openssl/* linguist-vendored
+# Auto detect text files and perform LF normalization
+* text=auto
+*.xcframework filter=lfs diff=lfs merge=lfs -text
+*.a filter=lfs diff=lfs merge=lfs -text
