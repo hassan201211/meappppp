@@ -1,0 +1,89 @@
+name: Beta Build and Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build, Modify, and Release Beta
+    runs-on: macos-26
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Use Xcode 26.2
+        run: |
+          sudo xcode-select -s /Applications/Xcode_26.2.app/Contents/Developer || true
+
+      - name: Modify App Info (Name and Bundle ID)
+        run: |
+          INFO_PLIST_PATH="Feather/Resources/Info.plist"
+          if [ ! -f "$INFO_PLIST_PATH" ]; then
+            echo "Error: Info.plist not found."
+            exit 1
+          fi
+
+          echo "Modifying Info.plist..."
+          plutil -replace CFBundleDisplayName -string "الرئيسية" "$INFO_PLIST_PATH" || true
+          plutil -replace CFBundleName -string "ATTACK STORE" "$INFO_PLIST_PATH" || true
+          plutil -replace CFBundleIdentifier -string "app.attackstore" "$INFO_PLIST_PATH" || true
+
+      - name: Patch NimbleKit for iOS 15 Compatibility
+        run: |
+          echo "Applying magical patch to downgrade iOS 16 UI to iOS 15..."
+          
+          # 1. تحويل رسمة .rect الحديثة إلى RoundedRectangle المدعومة في iOS 15
+          find . -name "*.swift" -type f -exec perl -pi -e 's/\.rect\(cornerRadius:\s*([^,]+),\s*style:\s*\.([^)]+)\)/RoundedRectangle(cornerRadius: $1, style: .$2)/g' {} +
+          
+          # 2. تحويل تأثير الزجاج .glassEffect المتقدم إلى خلفية شفافة متوافقة مع iOS 15
+          find . -name "*.swift" -type f -exec perl -pi -e 's/\.glassEffect\([^,]+,\s*in:/ \.background(Color.secondary.opacity(0.2), in:/g' {} +
+          
+          # 3. معالجة دوال التأثير الزجاجي الفارغة
+          find . -name "*.swift" -type f -exec perl -pi -e 's/\.glassEffect\(\)/\.background(Color.secondary.opacity(0.2))/g' {} +
+
+      - name: Set iOS 15 Deployment Target
+        run: |
+          INFO_PLIST_PATH="Feather/Resources/Info.plist"
+          if [ -f "$INFO_PLIST_PATH" ]; then
+            plutil -replace MinimumOSVersion -string "15.0" "$INFO_PLIST_PATH" || true
+          fi
+          
+          # إجبار جميع ملفات المشروع على التوافق مع 15.0
+          find . -name "project.pbxproj" -exec sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9]*\.[0-9]*;/IPHONEOS_DEPLOYMENT_TARGET = 15.0;/g' {} +
+
+      - name: Update Version with agvtool
+        run: |
+          agvtool new-version -all $(git rev-parse HEAD) || true
+
+      - name: Build and Verify
+        run: |
+          export IPHONEOS_DEPLOYMENT_TARGET=15.0
+          make iphoneos
+          mkdir -p upload
+          find . -name "*.ipa" -exec mv {} upload/ \;
+          test -n "$(find upload -name "*.ipa" -print -quit)"
+
+      - name: Get Version from Info.plist
+        id: get_version
+        run: |
+          INFO_PLIST_PATH="Feather/Resources/Info.plist"
+          VERSION=$(plutil -extract CFBundleShortVersionString raw "$INFO_PLIST_PATH" 2>/dev/null || echo "1.0.0")
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Create GitHub Release Directly
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NEW_TAG="beta-${{ github.run_number }}"
+          gh release create "$NEW_TAG" "upload/*.ipa" \
+            --title "ATTACK STORE v${{ env.VERSION }}" \
+            --notes "### ATTACK STORE Auto Build\nCommit: \`${{ github.sha }}\`\n*📱 iOS 15 Compatibility Patched*" \
+            --prerelease \
+            --target ${{ github.sha }}
